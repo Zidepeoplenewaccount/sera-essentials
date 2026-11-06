@@ -85,7 +85,7 @@ function updateDelivery(){
 }
 stateSelect.addEventListener('change',updateDelivery);
 cityInput.addEventListener('input',updateDelivery);
-document.getElementById('orderItems').innerHTML=cart.map(x=>`<div>${String(x.name)} × ${Number(x.qty)} — ${money(Number(x.price)*Number(x.qty))}</div>`).join('')||'Your bag is empty.';
+document.getElementById('orderItems').innerHTML=cart.map(x=>`<div>${String(x.name)}${x.colour?' · '+String(x.colour):''}${x.size?' · '+String(x.size):''} × ${Number(x.qty)} — ${money(Number(x.price)*Number(x.qty))}</div>`).join('')||'Your bag is empty.';
 document.getElementById('subtotal').textContent=money(subtotal);
 updateDelivery();
 loadFxRates();
@@ -111,13 +111,13 @@ form.addEventListener('submit',async e=>{
   const state=stateSelect.value,city=cityInput.value.trim(),fee=getDeliveryFee();
   if(fee===null)throw new Error('Please select your state and enter your city or area to show the estimated delivery fee.');
   const fullAddress=city+', '+state+'. '+document.getElementById('address').value.trim();
-  const order={id,order_number:orderNumber,customer_name:document.getElementById('name').value.trim(),phone:document.getElementById('phone').value.trim(),email:document.getElementById('email').value.trim()||null,delivery_address:fullAddress,items:cart.map(x=>({id:String(x.id),name:String(x.name),quantity:Number(x.qty),unit_price:Number(x.price),delivery_note:x.deliveryNote||null})),subtotal,delivery_fee:fee,total:subtotal+fee,receipt_path:path,status:'pending_verification'};
+  const order={id,order_number:orderNumber,customer_name:document.getElementById('name').value.trim(),phone:document.getElementById('phone').value.trim(),email:document.getElementById('email').value.trim()||null,delivery_address:fullAddress,items:cart.map(x=>({id:String(x.id),name:String(x.name),quantity:Number(x.qty),unit_price:Number(x.price),colour:x.colour||null,size:x.size||null,delivery_note:x.deliveryNote||null})),subtotal,delivery_fee:fee,total:subtotal+fee,receipt_path:path,status:'pending_verification'};
   const saved=await supabase.from('orders').insert(order);
   if(saved.error){await supabase.storage.from('payment-receipts').remove([path]);throw saved.error}
   form.style.display='none';
   document.getElementById('success').style.display='block';
   document.getElementById('orderRef').textContent=orderNumber;
-  const msg=`Hello SERA ESSENTIALS. I have submitted order ${orderNumber}. Name: ${order.customer_name}. Phone: ${order.phone}. Delivery location: ${fullAddress}. Subtotal: ${money(subtotal)}. Delivery: ${money(fee)}. Total: ${money(order.total)}. Please confirm receipt and order availability.${productDeliveryNotes.length?' Product delivery note: '+productDeliveryNotes.join(' '):''}`;
+  const msg=`Hello SERA ESSENTIALS. I have submitted order ${orderNumber}. Name: ${order.customer_name}. Phone: ${order.phone}. Delivery location: ${fullAddress}. Subtotal: ${money(subtotal)}. Delivery: ${money(fee)}. Total: ${money(order.total)}. Items: ${cart.map(x=>x.name+(x.colour?' ('+x.colour+')':'')+(x.size?' ('+x.size+')':'')+' × '+x.qty).join('; ')}. Please confirm receipt and order availability.${productDeliveryNotes.length?' Product delivery note: '+productDeliveryNotes.join(' '):''}`;
   document.getElementById('whatsappLink').href='https://wa.me/2349067756473?text='+encodeURIComponent(msg);
   localStorage.removeItem('sera_checkout_cart');
  }catch(err){error.textContent='We could not submit your order. '+(err.message||'Please try again or contact SERA on WhatsApp.');button.disabled=false;button.textContent='Submit order and receipt'}
