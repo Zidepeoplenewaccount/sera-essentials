@@ -1,5 +1,9 @@
 name: Deploy SERA website to InfinityFree
 
+concurrency:
+  group: sera-infinityfree-deploy
+  cancel-in-progress: true
+
 on:
   push:
     branches:
