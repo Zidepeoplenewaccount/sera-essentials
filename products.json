@@ -177,7 +177,13 @@
     "price": 3000,
     "image": "",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Pink",
+        "White"
+      ]
+    }
   },
   {
     "id": "sera-019",
