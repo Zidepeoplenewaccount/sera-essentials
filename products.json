@@ -103,10 +103,10 @@
     "name": "Cellulite Roller",
     "category": "Beauty",
     "description": "A handheld body massage roller for your self-care routine.",
-    "price": 4500,
-    "image": "",
+    "price": 8000,
+    "image": "images/cellulite-roller.jpg",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "low_stock"
   },
   {
     "id": "sera-007",
