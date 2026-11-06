@@ -177,11 +177,33 @@
     "id": "sera-011",
     "name": "Dermaroller",
     "category": "Beauty",
-    "description": "A handheld microneedling-style beauty tool. Use only in accordance with professional safety guidance.",
-    "price": 5000,
+    "description": "A handheld dermaroller available in different needle lengths. Select your preferred size. Longer needle options should be used only by appropriately trained professionals. Do not share the device.",
+    "price": 4600,
     "image": "",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "priceBySize": {
+      "0.2mm": 4600,
+      "0.25mm": 5200,
+      "0.3mm": 6500,
+      "1.0mm": 7770,
+      "1.5mm": 9560,
+      "2.0mm": 12500,
+      "2.5mm": 14800,
+      "3.0mm": 18680
+    },
+    "variants": {
+      "sizes": [
+        "0.2mm",
+        "0.25mm",
+        "0.3mm",
+        "1.0mm",
+        "1.5mm",
+        "2.0mm",
+        "2.5mm",
+        "3.0mm"
+      ]
+    }
   },
   {
     "id": "sera-012",
