@@ -381,5 +381,25 @@
         "Sky Blue"
       ]
     }
+  },
+  {
+    "id": "sera-034",
+    "name": "Silicone Facial Mask Brush (Pair)",
+    "category": "Beauty",
+    "description": "A pair of mild and soft silicone facial mask brushes, suitable for all skin types. Formaldehyde free. Choose any two colours for your pair.",
+    "price": 2500,
+    "image": "",
+    "active": true,
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Black",
+        "White",
+        "Yellow",
+        "Blue",
+        "Pink"
+      ],
+      "pairColours": true
+    }
   }
 ]
