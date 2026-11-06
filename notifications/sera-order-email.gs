@@ -1,5 +1,5 @@
 /**
- * SERA ESSENTIALS — new order email notifications
+ * SERA ESSENTIALS: New order email notifications
  *
  * Deploy as a Google Apps Script web app, execute as the script owner,
  * and set the script property:
@@ -43,11 +43,11 @@ function doPost(e) {
       return {
         text: quantity + ' × ' + (item.name || 'Product') +
           (variants ? ' (' + variants + ')' : '') +
-          ' — ' + naira(unitPrice) + ' each' +
+          ' · ' + naira(unitPrice) + ' each' +
           (discount > 0 ? ' [discount: ' + naira(discount) + ' per item]' : ''),
         html: '<li><strong>' + escapeHtml(quantity + ' × ' + (item.name || 'Product')) +
           '</strong>' + (variants ? ' (' + escapeHtml(variants) + ')' : '') +
-          ' — ' + naira(unitPrice) + ' each' +
+          ' · ' + naira(unitPrice) + ' each' +
           (discount > 0 ? '<br><span style="color:#16803c">Discount: ' + naira(discount) + ' per item</span>' : '') +
           '</li>'
       };
