@@ -43,7 +43,7 @@
     "category": "Beauty",
     "description": "Large diagonal-pattern facial ice mould. Choose your preferred colour.",
     "price": 6800,
-    "image": "",
+    "image": "images/facial-ice-mold-diagonal.webp",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
@@ -62,7 +62,7 @@
     "category": "Beauty",
     "description": "Small diagonal-pattern facial ice mould. Choose your preferred colour.",
     "price": 5500,
-    "image": "",
+    "image": "images/facial-ice-mold-diagonal.webp",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
