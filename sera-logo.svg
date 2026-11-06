@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="title desc">
 <title id="title">SERA Beauty Essentials</title><desc id="desc">Black SERA wordmark with a bright pink shopping bag and purple flowing accent, followed by Beauty Essentials and Look Good. Live Better.</desc>
 <defs><linearGradient id="pink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff168b"/><stop offset="1" stop-color="#ff4fa1"/></linearGradient><linearGradient id="purple" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#6d28d9"/><stop offset="1" stop-color="#a21caf"/></linearGradient></defs>
-<g fill="#080808" font-family="Georgia,serif" font-weight="bold"><text x="35" y="205" font-size="205" letter-spacing="-12">SER</text><text x="602" y="205" font-size="205">A</text></g>
+<g fill="#080808" font-family="Georgia,serif" font-weight="bold"><text x="35" y="205" font-size="205" letter-spacing="-12">SER</text><text x="455" y="205" font-size="205">A</text></g>
 <path d="M590 92 Q602 48 642 48 H748 Q788 48 800 92 L817 179 H575 Z" fill="none" stroke="url(#pink)" stroke-width="16" stroke-linejoin="round"/>
 <path d="M640 56 C640 -2 752 -2 752 56" fill="none" stroke="url(#pink)" stroke-width="16" stroke-linecap="round"/>
 <path d="M570 175 C650 230 741 105 837 167" fill="none" stroke="url(#purple)" stroke-width="17" stroke-linecap="round"/>
