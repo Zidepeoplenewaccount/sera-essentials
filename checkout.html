@@ -141,19 +141,21 @@ function populateAddProductSelect(){
 function renderAddProductVariants(){
  const product=catalogue.find(item=>String(item.id)===checkoutProductSelect.value);
  if(!product){checkoutVariantFields.innerHTML='';addCheckoutProduct.disabled=true;return}
- const variants=product.variants||{},colours=Array.isArray(variants.colours)?variants.colours:[],sizes=Array.isArray(variants.sizes)?variants.sizes:[];
- checkoutVariantFields.innerHTML=(colours.length?'<label>Colour<select id="newProductColour"><option value="">Select colour</option>'+colours.map(value=>'<option value="'+escapeHtml(value)+'">'+escapeHtml(value)+'</option>').join('')+'</select></label>':'')+(sizes.length?'<label>Size<select id="newProductSize"><option value="">Select size</option>'+sizes.map(value=>'<option value="'+escapeHtml(value)+'">'+escapeHtml(value)+'</option>').join('')+'</select></label>':'')+'<label>Quantity<input id="newProductQty" type="number" min="1" max="99" value="1"></label>';
+ const variants=product.variants||{},colours=Array.isArray(variants.colours)?variants.colours:[],sizes=Array.isArray(variants.sizes)?variants.sizes:[],pairColours=!!variants.pairColours;
+ const colourFields=pairColours?'<label>First brush colour<select id="newProductColour1"><option value="">Choose first colour</option>'+colours.map(value=>'<option value="'+escapeHtml(value)+'">'+escapeHtml(value)+'</option>').join('')+'</select></label><label>Second brush colour<select id="newProductColour2"><option value="">Choose second colour</option>'+colours.map(value=>'<option value="'+escapeHtml(value)+'">'+escapeHtml(value)+'</option>').join('')+'</select></label>':(colours.length?'<label>Colour<select id="newProductColour"><option value="">Select colour</option>'+colours.map(value=>'<option value="'+escapeHtml(value)+'">'+escapeHtml(value)+'</option>').join('')+'</select></label>':'');
+ checkoutVariantFields.innerHTML=colourFields+(sizes.length?'<label>Size<select id="newProductSize"><option value="">Select size</option>'+sizes.map(value=>'<option value="'+escapeHtml(value)+'">'+escapeHtml(value)+'</option>').join('')+'</select></label>':'')+'<label>Quantity<input id="newProductQty" type="number" min="1" max="99" value="1"></label>';
  addCheckoutProduct.disabled=false;
 }
 checkoutProductSelect.addEventListener('change',()=>{addProductMessage.textContent='';renderAddProductVariants()});
 addCheckoutProduct.addEventListener('click',()=>{
  const product=catalogue.find(item=>String(item.id)===checkoutProductSelect.value);
  if(!product)return;
- const colour=document.getElementById('newProductColour')?.value||'';
+ const variants=product.variants||{},pairColours=!!variants.pairColours;
+ const colour=pairColours?([document.getElementById('newProductColour1')?.value||'',document.getElementById('newProductColour2')?.value||''].filter(Boolean).join(' + ')):(document.getElementById('newProductColour')?.value||'');
  const size=document.getElementById('newProductSize')?.value||'';
  const qty=Math.max(1,Math.min(99,Number(document.getElementById('newProductQty')?.value)||1));
- const variants=product.variants||{};
- if((variants.colours||[]).length&&!colour){addProductMessage.textContent='Please select a colour.';return}
+ if(pairColours&&(!document.getElementById('newProductColour1')?.value||!document.getElementById('newProductColour2')?.value)){addProductMessage.textContent='Please choose both brush colours.';return}
+ if((variants.colours||[]).length&&!pairColours&&!colour){addProductMessage.textContent='Please select a colour.';return}
  if((variants.sizes||[]).length&&!size){addProductMessage.textContent='Please select a size.';return}
  const price=Number(product.price||0);
  if(!Number.isFinite(price)||price<=0){addProductMessage.textContent='This product price is unavailable. Please contact SERA.';return}
@@ -183,7 +185,7 @@ function renderCartEditor(){
  if(!cart.length){root.innerHTML='<p class="edit-hint">Your order is empty. <a href="index.html">Continue shopping</a>.</p>';return}
  root.innerHTML='<p class="edit-hint">You can change your selections or quantities before submitting your order.</p>'+cart.map((item,index)=>{
   const product=productFor(item),variants=product.variants||{},colours=Array.isArray(variants.colours)?variants.colours:[],sizes=Array.isArray(variants.sizes)?variants.sizes:[];
-  const colourControl=colours.length?'<label>Colour<select data-cart-field="colour" data-index="'+index+'"><option value="">Select colour</option>'+colours.map(v=>'<option value="'+escapeHtml(v)+'" '+(String(item.colour||'')===String(v)?'selected':'')+'>'+escapeHtml(v)+'</option>').join('')+'</select></label>':'';
+  const pairColours=!!variants.pairColours,chosen=String(item.colour||'').split(' + '),colourControl=pairColours?'<label>First brush colour<select data-cart-field="colour1" data-index="'+index+'"><option value="">Choose first colour</option>'+colours.map(v=>'<option value="'+escapeHtml(v)+'" '+(chosen[0]===v?'selected':'')+'>'+escapeHtml(v)+'</option>').join('')+'</select></label><label>Second brush colour<select data-cart-field="colour2" data-index="'+index+'"><option value="">Choose second colour</option>'+colours.map(v=>'<option value="'+escapeHtml(v)+'" '+(chosen[1]===v?'selected':'')+'>'+escapeHtml(v)+'</option>').join('')+'</select></label>':(colours.length?'<label>Colour<select data-cart-field="colour" data-index="'+index+'"><option value="">Select colour</option>'+colours.map(v=>'<option value="'+escapeHtml(v)+'" '+(String(item.colour||'')===String(v)?'selected':'')+'>'+escapeHtml(v)+'</option>').join('')+'</select></label>':'');
   const sizeControl=sizes.length?'<label>Size<select data-cart-field="size" data-index="'+index+'"><option value="">Select size</option>'+sizes.map(v=>'<option value="'+escapeHtml(v)+'" '+(String(item.size||'')===String(v)?'selected':'')+'>'+escapeHtml(v)+'</option>').join('')+'</select></label>':'';
   return '<div class="edit-item"><div class="edit-item-top"><div class="edit-item-name">'+escapeHtml(item.name)+'</div><div class="edit-item-price">'+money(Number(item.price)*Number(item.qty))+'</div></div><div class="edit-item-controls">'+colourControl+sizeControl+'</div><div class="edit-item-bottom"><label style="font-size:11px;font-weight:700;color:var(--muted)">Quantity<div class="edit-qty"><button type="button" data-cart-action="minus" data-index="'+index+'" aria-label="Reduce quantity">−</button><input type="number" min="1" max="99" value="'+Math.max(1,Number(item.qty)||1)+'" data-cart-field="qty" data-index="'+index+'" aria-label="Quantity for '+escapeHtml(item.name)+'"><button type="button" data-cart-action="plus" data-index="'+index+'" aria-label="Increase quantity">+</button></div></label><button type="button" class="remove-item" data-cart-action="remove" data-index="'+index+'">Remove item</button></div></div>';
  }).join('');
@@ -193,6 +195,7 @@ document.getElementById('checkoutCartEditor').addEventListener('change',event=>{
  if(!field||!cart[index])return;
  if(field==='qty')cart[index].qty=Math.max(1,Math.min(99,Number(event.target.value)||1));
  if(field==='colour')cart[index].colour=event.target.value;
+ if(field==='colour1'||field==='colour2'){const parts=String(cart[index].colour||'').split(' + ');parts[field==='colour1'?0:1]=event.target.value;cart[index].colour=parts.filter(Boolean).join(' + ')}
  if(field==='size')cart[index].size=event.target.value;
  refreshCartSummary();
 });
