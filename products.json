@@ -113,10 +113,17 @@
     "name": "Puffy Head & Wrist Bands",
     "category": "Beauty",
     "description": "A plush headband and wristband set for a comfortable, less-messy skincare routine.",
-    "price": 4500,
-    "image": "",
+    "price": 6000,
+    "image": "images/puffy-head-wrist-bands.jpg",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Black",
+        "Purple",
+        "Pink"
+      ]
+    }
   },
   {
     "id": "sera-008",
