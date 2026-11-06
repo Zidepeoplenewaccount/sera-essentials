@@ -33,7 +33,6 @@ const stateSelect=document.getElementById('state');
 states.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;stateSelect.appendChild(o)});
 const cityInput=document.getElementById('city');
 let deliveryFee=0;
-const money=n=>new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN',maximumFractionDigits:0}).format(n);
 function getDeliveryFee(){
  const state=stateSelect.value,city=cityInput.value.trim().toLowerCase();
  if(!state||!city)return null;
