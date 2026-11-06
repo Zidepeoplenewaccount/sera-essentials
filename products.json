@@ -1,43 +1,75 @@
 [
   {
     "id": "sera-001",
-    "name": "Purple Facial Ice Mould",
+    "name": "Facial Ice Mold (Large) Straight Pattern",
     "category": "Beauty",
-    "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: purple.",
-    "price": 4500,
+    "description": "Large straight-pattern facial ice mould. Choose your preferred colour.",
+    "price": 6500,
     "image": "",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Purple",
+        "Green",
+        "Blue",
+        "Black"
+      ]
+    }
   },
   {
     "id": "sera-002",
-    "name": "Green Facial Ice Mould",
+    "name": "Facial Ice Mold (Small) Straight Pattern",
     "category": "Beauty",
-    "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: green.",
-    "price": 4500,
+    "description": "Small straight-pattern facial ice mould. Choose your preferred colour.",
+    "price": 5000,
     "image": "",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Purple",
+        "Green",
+        "Blue",
+        "Black"
+      ]
+    }
   },
   {
     "id": "sera-003",
-    "name": "Blue Facial Ice Mould",
+    "name": "Facial Ice Mold (Large) Diagonal Pattern",
     "category": "Beauty",
-    "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: blue.",
-    "price": 4500,
+    "description": "Large diagonal-pattern facial ice mould. Choose your preferred colour.",
+    "price": 6800,
     "image": "",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Purple",
+        "Green",
+        "Blue",
+        "Black"
+      ]
+    }
   },
   {
     "id": "sera-004",
-    "name": "Black Facial Ice Mould",
+    "name": "Facial Ice Mold (Small) Diagonal Pattern",
     "category": "Beauty",
-    "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: black.",
-    "price": 4500,
+    "description": "Small diagonal-pattern facial ice mould. Choose your preferred colour.",
+    "price": 5500,
     "image": "",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Purple",
+        "Green",
+        "Blue",
+        "Black"
+      ]
+    }
   },
   {
     "id": "sera-005",
