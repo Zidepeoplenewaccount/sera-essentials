@@ -5,7 +5,7 @@
     "category": "Beauty",
     "description": "Large straight-pattern facial ice mould. Choose your preferred colour.",
     "price": 6500,
-    "image": "",
+    "image": "images/facial-ice-mold-straight.webp",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
@@ -24,7 +24,7 @@
     "category": "Beauty",
     "description": "Small straight-pattern facial ice mould. Choose your preferred colour.",
     "price": 5000,
-    "image": "",
+    "image": "images/facial-ice-mold-straight.webp",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
