@@ -80,10 +80,23 @@
     "name": "Skincare Routine Head & Wrist Bands",
     "category": "Beauty",
     "description": "A soft headband and wristband set to help keep hair and water away while cleansing and completing your skincare routine.",
-    "price": 4000,
-    "image": "",
+    "price": 5000,
+    "image": "images/skincare-routine-head-wrist-bands.jpg",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "White",
+        "Ash",
+        "Black",
+        "Pink",
+        "Lilac",
+        "Off White",
+        "Yellow",
+        "Grey",
+        "Light Blue"
+      ]
+    }
   },
   {
     "id": "sera-006",
