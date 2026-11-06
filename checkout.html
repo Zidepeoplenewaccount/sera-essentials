@@ -134,7 +134,7 @@ const addCheckoutProduct=document.getElementById('addCheckoutProduct');
 const addProductMessage=document.getElementById('addProductMessage');
 function populateAddProductSelect(){
  const available=catalogue.filter(product=>product.active!==false&&String(product.stockStatus||'').toLowerCase()!=='out_of_stock');
- checkoutProductSelect.innerHTML='<option value="">Select a product</option>'+available.map(product=>'<option value="'+escapeHtml(product.id)+'">'+escapeHtml(product.name)+' · '+money(Number(product.price||0))+'</option>').join('');
+ checkoutProductSelect.innerHTML='<option value="">Select a product</option>'+available.map(product=>'<option value="'+escapeHtml(product.id)+'">'+escapeHtml(product.name)+' · '+(product.priceBySize?money(Math.min(...Object.values(product.priceBySize)))+' – '+money(Math.max(...Object.values(product.priceBySize))):money(Number(product.price||0)))+'</option>').join('');
  checkoutProductSelect.disabled=!available.length;seraPickerTrigger.disabled=!available.length;renderSeraPicker();
  renderAddProductVariants();
 }
