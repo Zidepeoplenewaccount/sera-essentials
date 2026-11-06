@@ -1,0 +1,11 @@
+[
+  {
+    "id": "sera-001",
+    "name": "Product name goes here",
+    "category": "Beauty",
+    "description": "Add a short, accurate product description.",
+    "price": 0,
+    "image": "",
+    "active": false
+  }
+]
