@@ -8,6 +8,22 @@ create table if not exists public.admin_users (
 );
 alter table public.admin_users enable row level security;
 
+-- Check admin membership without exposing the admin_users table to customers.
+create or replace function public.is_sera_admin()
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
+as $
+  select exists (
+    select 1 from public.admin_users
+    where user_id = auth.uid()
+  );
+$;
+revoke all on function public.is_sera_admin() from public;
+grant execute on function public.is_sera_admin() to authenticated;
+
 create table if not exists public.orders (
   id uuid primary key,
   order_number text not null unique,
@@ -33,12 +49,12 @@ with check (status = 'pending_verification' and receipt_path <> '');
 
 create policy "SERA admins can view orders"
 on public.orders for select to authenticated
-using (exists (select 1 from public.admin_users a where a.user_id = auth.uid()));
+using (public.is_sera_admin());
 
 create policy "SERA admins can update orders"
 on public.orders for update to authenticated
-using (exists (select 1 from public.admin_users a where a.user_id = auth.uid()))
-with check (exists (select 1 from public.admin_users a where a.user_id = auth.uid()));
+using (public.is_sera_admin())
+with check (public.is_sera_admin());
 
 -- Create a PRIVATE bucket. Customers can upload a receipt but cannot read receipts.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
@@ -53,15 +69,11 @@ with check (bucket_id = 'payment-receipts');
 
 create policy "Only SERA admins can read payment receipts"
 on storage.objects for select to authenticated
-using (bucket_id = 'payment-receipts' and exists (
-  select 1 from public.admin_users a where a.user_id = auth.uid()
-));
+using (bucket_id = 'payment-receipts' and public.is_sera_admin());
 
 create policy "Only SERA admins can delete payment receipts"
 on storage.objects for delete to authenticated
-using (bucket_id = 'payment-receipts' and exists (
-  select 1 from public.admin_users a where a.user_id = auth.uid()
-));
+using (bucket_id = 'payment-receipts' and public.is_sera_admin());
 
 -- After creating your admin user in Authentication > Users, copy its UUID
 -- and run this once (replace the value; do not share a service-role key):
