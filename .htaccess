@@ -1,5 +1,9 @@
 RewriteEngine On
 
+# Give the homepage a clean /home URL while keeping the root domain working.
+RewriteRule ^index/?$ /home [R=301,L]
+RewriteRule ^home/?$ index.html [L]
+
 # Redirect direct .html URLs to clean extensionless URLs.
 RewriteCond %{THE_REQUEST} \s/+(.+?)\.html(?:[\s?]) [NC]
 RewriteRule ^(.+)\.html$ /$1 [R=301,L,NE]
