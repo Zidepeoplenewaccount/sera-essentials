@@ -1,11 +1,290 @@
 [
   {
     "id": "sera-001",
-    "name": "Product name goes here",
+    "name": "Purple Facial Ice Mould",
     "category": "Beauty",
-    "description": "Add a short, accurate product description.",
-    "price": 0,
+    "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: purple.",
+    "price": 4500,
     "image": "",
-    "active": false
+    "active": true
+  },
+  {
+    "id": "sera-002",
+    "name": "Green Facial Ice Mould",
+    "category": "Beauty",
+    "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: green.",
+    "price": 4500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-003",
+    "name": "Blue Facial Ice Mould",
+    "category": "Beauty",
+    "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: blue.",
+    "price": 4500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-004",
+    "name": "Black Facial Ice Mould",
+    "category": "Beauty",
+    "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: black.",
+    "price": 4500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-005",
+    "name": "Skincare Routine Head & Wrist Bands",
+    "category": "Beauty",
+    "description": "A soft headband and wristband set to help keep hair and water away while cleansing and completing your skincare routine.",
+    "price": 4000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-006",
+    "name": "Cellulite Roller",
+    "category": "Beauty",
+    "description": "A handheld body massage roller for your self-care routine.",
+    "price": 4500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-007",
+    "name": "Puffy Head & Wrist Bands",
+    "category": "Beauty",
+    "description": "A plush headband and wristband set for a comfortable, less-messy skincare routine.",
+    "price": 4500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-008",
+    "name": "DIY Face Mask Sheets (10 Pieces)",
+    "category": "Beauty",
+    "description": "Pack of 10 dry sheet masks for use with your preferred facial essence or mask mixture.",
+    "price": 3000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-009",
+    "name": "Lemon Face Sponges (10 Pieces)",
+    "category": "Beauty",
+    "description": "Pack of 10 facial cleansing sponges.",
+    "price": 3000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-010",
+    "name": "Microfibre Hair Towel",
+    "category": "Beauty",
+    "description": "A soft microfibre towel designed to help absorb moisture from hair after washing.",
+    "price": 4000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-011",
+    "name": "Dermaroller",
+    "category": "Beauty",
+    "description": "A handheld microneedling-style beauty tool. Use only in accordance with professional safety guidance.",
+    "price": 5000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-012",
+    "name": "Foamy Bubbling Maker",
+    "category": "Beauty",
+    "description": "A foaming tool for creating a lather with your facial cleanser.",
+    "price": 2500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-013",
+    "name": "Stainless Gua Sha (8cm)",
+    "category": "Beauty",
+    "description": "An 8cm stainless-steel gua sha massage tool for your facial massage routine.",
+    "price": 6500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-014",
+    "name": "Stainless Gua Sha (6cm)",
+    "category": "Beauty",
+    "description": "A compact 6cm stainless-steel gua sha massage tool.",
+    "price": 3500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-015",
+    "name": "Hair Pressure Spray",
+    "category": "Beauty",
+    "description": "A refillable spray bottle for misting and refreshing hair.",
+    "price": 5000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-016",
+    "name": "Blue Double-Sided Silicone Face Brush",
+    "category": "Beauty",
+    "description": "A double-sided silicone facial cleansing brush. Colour: blue.",
+    "price": 2000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-017",
+    "name": "Hot & Cold Compress Face Towel",
+    "category": "Beauty",
+    "description": "A facial towel designed for hot or cold compress use.",
+    "price": 4000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-018",
+    "name": "Silicone Face Mask",
+    "category": "Beauty",
+    "description": "A reusable silicone face mask accessory.",
+    "price": 3000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-019",
+    "name": "Face Oil Absorber",
+    "category": "Beauty",
+    "description": "A compact tool for absorbing excess facial oil.",
+    "price": 500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-020",
+    "name": "Konjac Face Sponge",
+    "category": "Beauty",
+    "description": "A konjac facial cleansing sponge for gentle cleansing.",
+    "price": 1500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-021",
+    "name": "Cotton Pad Jar",
+    "category": "Beauty",
+    "description": "A storage jar for keeping cotton pads organised and within easy reach.",
+    "price": 3500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-022",
+    "name": "Silicone Bowl & Mixer",
+    "category": "Beauty",
+    "description": "A silicone mixing bowl and spatula set for preparing DIY face masks.",
+    "price": 4000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-023",
+    "name": "Pink Natural Jade Stone Gua Sha",
+    "category": "Beauty",
+    "description": "A natural jade stone gua sha tool for facial massage. Colour: pink.",
+    "price": 6500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-024",
+    "name": "White Natural Jade Stone Gua Sha",
+    "category": "Beauty",
+    "description": "A natural jade stone gua sha tool for facial massage. Colour: white.",
+    "price": 6500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-025",
+    "name": "Rose Quartz Gua Sha Massager",
+    "category": "Beauty",
+    "description": "A rose quartz gua sha tool for facial massage.",
+    "price": 4200,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-026",
+    "name": "Sonic Face Brush",
+    "category": "Beauty",
+    "description": "An electronic sonic facial cleansing brush. Follow the manufacturer's usage and cleaning instructions.",
+    "price": 6500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-027",
+    "name": "Yellow Face Sponges (10 Pieces)",
+    "category": "Beauty",
+    "description": "Pack of 10 facial cleansing sponges. Colour: yellow.",
+    "price": 3000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-028",
+    "name": "Pink Face Sponges (10 Pieces)",
+    "category": "Beauty",
+    "description": "Pack of 10 facial cleansing sponges. Colour: pink.",
+    "price": 3000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-029",
+    "name": "Face Brush",
+    "category": "Beauty",
+    "description": "A facial cleansing brush for your skincare routine.",
+    "price": 3500,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-030",
+    "name": "Jade Roller & Gua Sha Massager Set",
+    "category": "Beauty",
+    "description": "A jade roller and gua sha set for facial massage.",
+    "price": 7000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-031",
+    "name": "Facial Mist Spray",
+    "category": "Beauty",
+    "description": "A refillable facial mist spray bottle for refreshing your skin.",
+    "price": 4000,
+    "image": "",
+    "active": true
+  },
+  {
+    "id": "sera-032",
+    "name": "Pink Double-Sided Silicone Face Brush",
+    "category": "Beauty",
+    "description": "A double-sided silicone facial cleansing brush. Colour: pink.",
+    "price": 2000,
+    "image": "",
+    "active": true
   }
 ]
