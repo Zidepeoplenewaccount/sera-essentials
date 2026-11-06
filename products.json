@@ -127,13 +127,18 @@
   },
   {
     "id": "sera-008",
-    "name": "DIY Face Mask Sheets (10 Pieces)",
+    "name": "Disposable Face Mask DIY Soft Non-toxic Pure Facemask Sheet Beauty Tools Breathable Cotton Face Mask Sheet Paper",
     "category": "Beauty",
-    "description": "Pack of 10 dry sheet masks for use with your preferred facial essence or mask mixture.",
-    "price": 3000,
-    "image": "",
+    "description": "Soft, breathable cotton face mask sheets for DIY skincare treatments. Each pack contains 10 disposable sheets.",
+    "price": 3580,
+    "image": "images/disposable-diy-face-mask-sheets.jpg",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "White"
+      ]
+    }
   },
   {
     "id": "sera-009",
