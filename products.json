@@ -6,7 +6,8 @@
     "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: purple.",
     "price": 4500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-002",
@@ -15,7 +16,8 @@
     "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: green.",
     "price": 4500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-003",
@@ -24,7 +26,8 @@
     "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: blue.",
     "price": 4500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-004",
@@ -33,7 +36,8 @@
     "description": "Reusable facial ice mould for a refreshing skincare routine. Colour: black.",
     "price": 4500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-005",
@@ -42,7 +46,8 @@
     "description": "A soft headband and wristband set to help keep hair and water away while cleansing and completing your skincare routine.",
     "price": 4000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-006",
@@ -51,7 +56,8 @@
     "description": "A handheld body massage roller for your self-care routine.",
     "price": 4500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-007",
@@ -60,7 +66,8 @@
     "description": "A plush headband and wristband set for a comfortable, less-messy skincare routine.",
     "price": 4500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-008",
@@ -69,7 +76,8 @@
     "description": "Pack of 10 dry sheet masks for use with your preferred facial essence or mask mixture.",
     "price": 3000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-009",
@@ -78,7 +86,8 @@
     "description": "Pack of 10 facial cleansing sponges.",
     "price": 3000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-010",
@@ -87,7 +96,8 @@
     "description": "A soft microfibre towel designed to help absorb moisture from hair after washing.",
     "price": 4000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-011",
@@ -96,7 +106,8 @@
     "description": "A handheld microneedling-style beauty tool. Use only in accordance with professional safety guidance.",
     "price": 5000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-012",
@@ -105,7 +116,8 @@
     "description": "A foaming tool for creating a lather with your facial cleanser.",
     "price": 2500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-013",
@@ -114,7 +126,8 @@
     "description": "An 8cm stainless-steel gua sha massage tool for your facial massage routine.",
     "price": 6500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-014",
@@ -123,7 +136,8 @@
     "description": "A compact 6cm stainless-steel gua sha massage tool.",
     "price": 3500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-015",
@@ -132,7 +146,8 @@
     "description": "A refillable spray bottle for misting and refreshing hair.",
     "price": 5000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-016",
@@ -141,7 +156,8 @@
     "description": "A double-sided silicone facial cleansing brush. Colour: blue.",
     "price": 2000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-017",
@@ -150,7 +166,8 @@
     "description": "A facial towel designed for hot or cold compress use.",
     "price": 4000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-018",
@@ -159,7 +176,8 @@
     "description": "A reusable silicone face mask accessory.",
     "price": 3000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-019",
@@ -168,7 +186,8 @@
     "description": "A compact tool for absorbing excess facial oil.",
     "price": 500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-020",
@@ -177,7 +196,8 @@
     "description": "A konjac facial cleansing sponge for gentle cleansing.",
     "price": 1500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-021",
@@ -186,7 +206,8 @@
     "description": "A storage jar for keeping cotton pads organised and within easy reach.",
     "price": 3500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-022",
@@ -195,7 +216,8 @@
     "description": "A silicone mixing bowl and spatula set for preparing DIY face masks.",
     "price": 4000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-023",
@@ -204,7 +226,8 @@
     "description": "A natural jade stone gua sha tool for facial massage. Colour: pink.",
     "price": 6500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-024",
@@ -213,7 +236,8 @@
     "description": "A natural jade stone gua sha tool for facial massage. Colour: white.",
     "price": 6500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-025",
@@ -222,7 +246,8 @@
     "description": "A rose quartz gua sha tool for facial massage.",
     "price": 4200,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-026",
@@ -231,7 +256,8 @@
     "description": "An electronic sonic facial cleansing brush. Follow the manufacturer's usage and cleaning instructions.",
     "price": 6500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-027",
@@ -240,7 +266,8 @@
     "description": "Pack of 10 facial cleansing sponges. Colour: yellow.",
     "price": 3000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-028",
@@ -249,7 +276,8 @@
     "description": "Pack of 10 facial cleansing sponges. Colour: pink.",
     "price": 3000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-029",
@@ -258,7 +286,8 @@
     "description": "A facial cleansing brush for your skincare routine.",
     "price": 3500,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-030",
@@ -267,7 +296,8 @@
     "description": "A jade roller and gua sha set for facial massage.",
     "price": 7000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-031",
@@ -276,7 +306,8 @@
     "description": "A refillable facial mist spray bottle for refreshing your skin.",
     "price": 4000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   },
   {
     "id": "sera-032",
@@ -285,6 +316,7 @@
     "description": "A double-sided silicone facial cleansing brush. Colour: pink.",
     "price": 2000,
     "image": "",
-    "active": true
+    "active": true,
+    "stockStatus": "in_stock"
   }
 ]
