@@ -20,13 +20,13 @@ const cart=JSON.parse(localStorage.getItem('sera_checkout_cart')||'[]');
 const money=n=>new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN',maximumFractionDigits:0}).format(n);
 const subtotal=cart.reduce((s,x)=>s+Number(x.price)*Number(x.qty),0);
 const deliveryRates={
-'Lagos':{base:3000,near:2000,island:3500,outskirts:4500},
-'Ogun':6500,'Oyo':7500,'Osun':8500,'Ondo':8500,'Ekiti':8500,
-'Abuja (FCT)':9500,'Niger':10000,'Kogi':10000,'Kwara':10000,'Benue':11000,'Nasarawa':10000,'Plateau':11000,
-'Abia':10000,'Anambra':10000,'Ebonyi':11000,'Enugu':10000,'Imo':10000,
-'Akwa Ibom':11000,'Bayelsa':12000,'Cross River':11500,'Delta':11000,'Edo':10500,'Rivers':11000,
-'Kano':12000,'Kaduna':11500,'Katsina':12500,'Kebbi':13000,'Jigawa':12500,'Sokoto':13000,'Zamfara':13000,
-'Adamawa':13500,'Bauchi':13000,'Borno':14500,'Gombe':13500,'Taraba':14000,'Yobe':14500
+'Lagos':{base:3000,near:2000,island:3000,outskirts:3500},
+'Ogun':4000,'Oyo':4500,'Osun':5000,'Ondo':5000,'Ekiti':5000,
+'Abuja (FCT)':5000,'Niger':5500,'Kogi':5500,'Kwara':5500,'Benue':6000,'Nasarawa':5500,'Plateau':6000,
+'Abia':6000,'Anambra':6000,'Ebonyi':6500,'Enugu':6000,'Imo':6000,
+'Akwa Ibom':6500,'Bayelsa':7000,'Cross River':7000,'Delta':6500,'Edo':6000,'Rivers':6500,
+'Kano':7000,'Kaduna':6500,'Katsina':7500,'Kebbi':7500,'Jigawa':7500,'Sokoto':8000,'Zamfara':7500,
+'Adamawa':8000,'Bauchi':7500,'Borno':8500,'Gombe':8000,'Taraba':8500,'Yobe':8500
 };
 const states=Object.keys(deliveryRates);
 const stateSelect=document.getElementById('state');
