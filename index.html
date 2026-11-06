@@ -62,7 +62,7 @@
       const cacheKey='sera_ngn_fx_rates';
       try{
         const cached=JSON.parse(localStorage.getItem(cacheKey)||'null');
-        if(cached&&cached.expiresAt>Date.now()&&cached.rates){fxRates=cached.rates;return}
+        if(cached&&cached.expiresAt>Date.now()&&cached.rates){fxRates=cached.rates;if(displayCurrency!=='NGN')drawProducts(visibleProducts);renderCart();return}
       }catch(_){}
       try{
         const response=await fetch('https://open.er-api.com/v6/latest/NGN',{cache:'no-store'});
