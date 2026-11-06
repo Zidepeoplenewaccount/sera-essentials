@@ -111,7 +111,7 @@ form.addEventListener('submit',async e=>{
   const state=stateSelect.value,city=cityInput.value.trim(),fee=getDeliveryFee();
   if(fee===null)throw new Error('Please select your state and enter your city or area to show the estimated delivery fee.');
   const fullAddress=city+', '+state+'. '+document.getElementById('address').value.trim();
-  const order={id,order_number:orderNumber,customer_name:document.getElementById('name').value.trim(),phone:document.getElementById('phone').value.trim(),email:document.getElementById('email').value.trim()||null,delivery_address:fullAddress,items:cart.map(x=>({id:String(x.id),name:String(x.name),quantity:Number(x.qty),unit_price:Number(x.price),colour:x.colour||null,size:x.size||null,delivery_note:x.deliveryNote||null})),subtotal,delivery_fee:fee,total:subtotal+fee,receipt_path:path,status:'pending_verification'};
+  const order={id,order_number:orderNumber,customer_name:document.getElementById('name').value.trim(),phone:document.getElementById('phone').value.trim(),email:document.getElementById('email').value.trim()||null,delivery_address:fullAddress,items:cart.map(x=>({id:String(x.id),name:String(x.name),quantity:Number(x.qty),unit_price:Number(x.price),original_unit_price:Number(x.originalPrice||x.price),discount_amount:Math.max(0,Number(x.originalPrice||x.price)-Number(x.price)),colour:x.colour||null,size:x.size||null,delivery_note:x.deliveryNote||null})),subtotal,delivery_fee:fee,total:subtotal+fee,receipt_path:path,status:'pending_verification'};
   const saved=await supabase.from('orders').insert(order);
   if(saved.error){await supabase.storage.from('payment-receipts').remove([path]);throw saved.error}
   form.style.display='none';
