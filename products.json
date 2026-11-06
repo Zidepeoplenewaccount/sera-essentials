@@ -224,10 +224,11 @@
     "name": "Pink Natural Jade Stone Gua Sha",
     "category": "Beauty",
     "description": "A natural jade stone gua sha tool for facial massage. Colour: pink.",
-    "price": 6500,
-    "image": "",
+    "price": 12000,
+    "image": "images/pink-natural-jade-gua-sha.webp",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "deliveryNote": "Estimated delivery is approximately 2 weeks, depending on product availability."
   },
   {
     "id": "sera-024",
