@@ -73,7 +73,7 @@ function getDeliveryFee(){
 function updateDelivery(){
  const fee=getDeliveryFee(),feeText=document.getElementById('deliveryFee');
  deliveryFee=fee===null?0:fee;
- feeText.textContent=fee===null?'Enter your state and city to see the estimated fee':money(fee);
+ feeText.textContent=fee===null?'Select your state and enter your city or area to see the estimated fee':money(fee);
  document.getElementById('deliverySummary').textContent=fee===null?'—':money(fee);
  document.getElementById('grandTotal').textContent=money(subtotal+deliveryFee);
  updateFxEstimate();
