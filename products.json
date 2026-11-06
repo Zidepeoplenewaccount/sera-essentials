@@ -401,5 +401,31 @@
       ],
       "pairColours": true
     }
+  },
+  {
+    "id": "sera-035",
+    "name": "Portable Mini Hand Clip Fan (4-Blade)",
+    "category": "Electronics",
+    "description": "A compact 4-blade portable fan that can be clipped onto a surface or used as a small desktop fan. USB-powered and designed for quiet cooling. Choose whether you want the battery included.",
+    "price": 9000,
+    "priceBySize": {
+      "With battery": 10000,
+      "Without battery": 9000
+    },
+    "image": "",
+    "active": true,
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Navy Blue",
+        "White",
+        "Black",
+        "Pink"
+      ],
+      "sizes": [
+        "With battery",
+        "Without battery"
+      ]
+    }
   }
 ]
