@@ -38,7 +38,7 @@ Deno.serve(async (req) => {
       const supplierUrl = String(body.url || "").trim();
       let parsed: URL;
       try { parsed = new URL(supplierUrl); } catch { return reply({ error: "Enter a valid product URL." }, 400); }
-      if (!/(^|\\.)aliexpress\\.com$/i.test(parsed.hostname)) {
+      if (!/(^|\.)aliexpress\.com$/i.test(parsed.hostname)) {
         return reply({ error: "Automatic link import is currently enabled for AliExpress links only. Temu needs a separate approved data connection; we will not pretend it imported successfully." }, 400);
       }
       endpoint = "product-details";
