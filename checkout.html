@@ -38,9 +38,9 @@ form.addEventListener('submit',async e=>{
   const upload=await supabase.storage.from('payment-receipts').upload(path,file,{upsert:false,contentType:file.type});
   if(upload.error)throw upload.error;
   const order={id,order_number:orderNumber,customer_name:document.getElementById('name').value.trim(),phone:document.getElementById('phone').value.trim(),email:document.getElementById('email').value.trim()||null,delivery_address:document.getElementById('address').value.trim(),items:cart.map(x=>({id:String(x.id),name:String(x.name),quantity:Number(x.qty),unit_price:Number(x.price)})),subtotal:total,delivery_fee:0,total,receipt_path:path,status:'pending_verification'};
-  const saved=await supabase.from('orders').insert(order).select('order_number').single();
+  const saved=await supabase.from('orders').insert(order);
   if(saved.error){await supabase.storage.from('payment-receipts').remove([path]);throw saved.error}
-  document.getElementById('checkoutLayout').style.display='none';
+  form.style.display='none';
   document.getElementById('success').style.display='block';
   document.getElementById('orderRef').textContent=orderNumber;
   const msg=`Hello SERA ESSENTIALS. I have submitted order ${orderNumber}. Name: ${order.customer_name}. Phone: ${order.phone}. Please confirm receipt and advise on delivery.`;
