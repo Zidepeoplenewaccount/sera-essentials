@@ -202,6 +202,12 @@
         "2.0mm",
         "2.5mm",
         "3.0mm"
+      ],
+      "colours": [
+        "Black head",
+        "Purple head",
+        "Green head",
+        "White handle with purple head"
       ]
     }
   },
