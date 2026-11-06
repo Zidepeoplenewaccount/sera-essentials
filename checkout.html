@@ -20,7 +20,7 @@ const cart=JSON.parse(localStorage.getItem('sera_checkout_cart')||'[]');
 const money=n=>new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN',maximumFractionDigits:0}).format(n);
 const subtotal=cart.reduce((s,x)=>s+Number(x.price)*Number(x.qty),0);
 const deliveryRates={
-'Lagos':{base:5000,near:4000,island:6500,outskirts:7000},
+'Lagos':{base:3000,near:2000,island:3500,outskirts:4500},
 'Ogun':6500,'Oyo':7500,'Osun':8500,'Ondo':8500,'Ekiti':8500,
 'Abuja (FCT)':9500,'Niger':10000,'Kogi':10000,'Kwara':10000,'Benue':11000,'Nasarawa':10000,'Plateau':11000,
 'Abia':10000,'Anambra':10000,'Ebonyi':11000,'Enugu':10000,'Imo':10000,
