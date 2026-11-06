@@ -75,7 +75,7 @@
     fetch('./products.json').then(r=>r.ok?r.json():[]).then(data=>{products=Array.isArray(data)?data.filter(p=>p.active!==false):[];drawProducts(products)}).catch(()=>drawProducts([]));
     document.getElementById('search').addEventListener('input',e=>{const q=e.target.value.toLowerCase();drawProducts(products.filter(p=>(p.name+' '+p.category+' '+(p.description||'')).toLowerCase().includes(q)))});
     document.querySelectorAll('[data-category]').forEach(a=>a.addEventListener('click',()=>{const c=a.dataset.category;document.getElementById('search').value=c;drawProducts(products.filter(p=>p.category.toLowerCase().includes(c.toLowerCase())))}));
-    document.getElementById('checkout').addEventListener('click',()=>{if(!cart.length){alert('Your shopping bag is empty.');return}const items=cart.map(x=>`• ${x.name} × ${x.qty} — ${money(x.price*x.qty)}`).join('\\n');const total=money(cart.reduce((s,x)=>s+x.price*x.qty,0));const message=`Hello SERA ESSENTIALS! I would like to place an order.\\n\\nMy items:\\n${items}\\n\\nSubtotal: ${total}\\n\\nPlease confirm availability, delivery fee, estimated delivery time and payment details.\\n\\nMy name:\\nDelivery location/address:\\nPhone number:`;window.open('https://wa.me/2349067756473?text='+encodeURIComponent(message),'_blank','noopener');});
+    document.getElementById('checkout').addEventListener('click',()=>{if(!cart.length){alert('Your shopping bag is empty.');return}localStorage.setItem('sera_checkout_cart',JSON.stringify(cart));window.location.href='checkout.html';});
     renderCart();
   </script>
 </body>
