@@ -155,10 +155,23 @@
     "name": "Microfibre Hair Towel",
     "category": "Beauty",
     "description": "A soft microfibre towel designed to help absorb moisture from hair after washing.",
-    "price": 4000,
-    "image": "",
+    "price": 5000,
+    "image": "images/microfibre-hair-towel.jpg",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "White",
+        "Off White",
+        "Purple",
+        "Brown",
+        "Blue",
+        "Turquoise Blue",
+        "Grey",
+        "Black",
+        "Cream"
+      ]
+    }
   },
   {
     "id": "sera-011",
