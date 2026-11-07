@@ -171,19 +171,23 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
 
 
 
-/* SHOP WIDTH: the shop is a normal full-width block inside main.
-   Do not use viewport breakout margins or a centred max-width container here. */
-main > .shop-area{
+/* FULL-BLEED SHOP: extend the complete shop section to the viewport edges,
+   even if a parent layout later introduces a centred/max-width container. */
+.shop-area{
   display:block!important;
-  width:100%!important;
-  max-width:none!important;
-  margin:0!important;
+  position:relative!important;
+  left:50%!important;
+  right:auto!important;
+  width:100vw!important;
+  max-width:100vw!important;
+  margin-left:-50vw!important;
+  margin-right:0!important;
   padding:0!important;
-  position:static!important;
-  transform:none!important;
   box-sizing:border-box!important;
+  overflow:clip;
+  transform:none!important;
 }
-main > .shop-area > section#shop{
+.shop-area > section#shop{
   display:block!important;
   width:100%!important;
   max-width:none!important;
@@ -195,9 +199,8 @@ main > .shop-area > section#shop{
   float:none!important;
   transform:none!important;
 }
-main > .shop-area > section#shop > .section-head,
-main > .shop-area > section#shop > .products{
-  display:flex;
+.shop-area > section#shop > .section-head{
+  display:flex!important;
   width:100%!important;
   max-width:none!important;
   min-width:0!important;
@@ -205,21 +208,26 @@ main > .shop-area > section#shop > .products{
   margin-right:0!important;
   box-sizing:border-box!important;
 }
-main > .shop-area > section#shop > .products{
+.shop-area > section#shop > #products{
   display:grid!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:0!important;
   grid-template-columns:repeat(6,minmax(0,1fr))!important;
   gap:16px!important;
-  padding:0!important;
   justify-content:stretch!important;
   justify-items:stretch!important;
+  box-sizing:border-box!important;
 }
 @media(max-width:800px){
-  main > .shop-area > section#shop{padding:44px 18px 52px!important}
-  main > .shop-area > section#shop > .products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  .shop-area > section#shop{padding:44px 18px 52px!important}
+  .shop-area > section#shop > #products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
 }
 @media(max-width:430px){
-  main > .shop-area > section#shop{padding-left:12px!important;padding-right:12px!important}
-  main > .shop-area > section#shop > .products{gap:9px!important}
+  .shop-area > section#shop{padding-left:12px!important;padding-right:12px!important}
+  .shop-area > section#shop > #products{gap:9px!important}
 }
 
   </style>
