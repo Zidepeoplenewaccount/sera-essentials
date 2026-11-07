@@ -258,10 +258,29 @@
     "name": "Hair Pressure Spray",
     "category": "Beauty",
     "description": "A refillable spray bottle for misting and refreshing hair.",
-    "price": 4970,
+    "price": 5800,
     "image": "images/Sd39a65ae849a45e2a3a4eff76414a4cdQ.jpg_220x220q75.jpg_.avif",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "priceBySize": {
+      "Small": 5800,
+      "Big": 7600
+    },
+    "variants": {
+      "types": [
+        "Small",
+        "Big"
+      ],
+      "colours": [
+        "Black",
+        "White",
+        "Sky Blue",
+        "Transparent body with purple cover",
+        "Yellow",
+        "Green",
+        "Purple"
+      ]
+    }
   },
   {
     "id": "sera-016",
