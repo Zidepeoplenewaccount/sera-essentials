@@ -142,13 +142,24 @@
   },
   {
     "id": "sera-009",
-    "name": "Lemon Face Sponges (5 Pieces)",
+    "name": "Magic Cellulose Face Sponge",
     "category": "Beauty",
-    "description": "A pack of 5 soft lemon face sponges for cleansing and removing face masks.",
+    "description": "A pack of 5 soft cellulose face sponges for cleansing and removing face masks. Choose your preferred colour.",
     "price": 2980,
     "image": "images/IMG_5859.WEBP",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Lemon",
+        "Pink",
+        "Blue",
+        "Purple",
+        "Black",
+        "Yellow",
+        "White"
+      ]
+    }
   },
   {
     "id": "sera-010",
