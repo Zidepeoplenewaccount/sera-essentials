@@ -291,10 +291,16 @@ form.addEventListener('submit',async e=>{
   const state=stateSelect.value,city=cityInput.value.trim(),fee=getDeliveryFee();
   if(fee===null)throw new Error('Please select your state and enter your city or area to show the estimated delivery fee.');
   const fullAddress=hasPhysicalItems()?city+', '+state+'. '+document.getElementById('address').value.trim():'Digital service — no delivery required';
-  const grossSubtotal=subtotal,discount=Math.min(appliedDiscount.amount,subtotal),payableTotal=subtotal+fee-discount;
-  if(appliedDiscount.code){const reserved=await supabase.rpc('sera_reserve_discount_code',{p_code:appliedDiscount.code,p_phone:document.getElementById('phone').value.trim(),p_order_id:id});if(reserved.error)throw reserved.error;const reserveResult=Array.isArray(reserved.data)?reserved.data[0]:reserved.data;if(!reserveResult||!reserveResult.discount_amount)throw new Error('Your discount code could not be reserved. Please re-apply it or contact SERA.');appliedDiscount.amount=Number(reserveResult.discount_amount);appliedDiscount.points=Number(reserveResult.points)}
-  const grossSubtotal=subtotal,discount=Math.min(appliedDiscount.amount,subtotal),payableTotal=subtotal+fee-discount;
-  if(appliedDiscount.code){const reserved=await supabase.rpc('sera_reserve_discount_code',{p_code:appliedDiscount.code,p_phone:document.getElementById('phone').value.trim(),p_order_id:id});if(reserved.error)throw reserved.error;const reserveResult=Array.isArray(reserved.data)?reserved.data[0]:reserved.data;if(!reserveResult||!reserveResult.discount_amount)throw new Error('Your discount code could not be reserved. Please re-apply it or contact SERA.');}
+  const grossSubtotal=subtotal;
+  let discount=0;
+  if(appliedDiscount.code){
+    const reserved=await supabase.rpc('sera_reserve_discount_code',{p_code:appliedDiscount.code,p_phone:document.getElementById('phone').value.trim(),p_order_id:id});
+    if(reserved.error)throw reserved.error;
+    const reserveResult=Array.isArray(reserved.data)?reserved.data[0]:reserved.data;
+    if(!reserveResult||!Number(reserveResult.discount_amount))throw new Error('This code has already been used or cannot be reserved. Please re-apply it.');
+    discount=Math.min(Number(reserveResult.discount_amount),grossSubtotal);
+  }
+  const payableTotal=grossSubtotal+fee-discount;
   const order={id,order_number:orderNumber,customer_name:document.getElementById('name').value.trim(),phone:document.getElementById('phone').value.trim(),email:document.getElementById('email').value.trim()||null,delivery_address:fullAddress,items:cart.map(x=>{const p=catalogue.find(product=>String(product.id)===String(x.id))||x,v=p.variants||{};if(v.pairColours&&String(x.colour||'').split(' + ').length!==2)throw new Error('Please select both brush colours for '+x.name+'.');if((v.colours||[]).length&&!v.pairColours&&!x.colour)throw new Error('Please select a colour for '+x.name+'.');if((v.sizes||[]).length&&!x.size)throw new Error('Please select a size for '+x.name+'.');return {id:String(x.id),item_type:x.itemType==='service'?'service':'product',name:String(x.name),quantity:Number(x.qty),unit_price:Number(x.price),original_unit_price:Number(x.originalPrice||x.price),discount_amount:Math.max(0,Number(x.originalPrice||x.price)-Number(x.price)),colour:x.colour||null,size:x.size||null,delivery_note:x.deliveryNote||null}}),subtotal:grossSubtotal,delivery_fee:fee,total:payableTotal,discount_code:appliedDiscount.code,discount_amount:discount,receipt_path:path,status:'pending_verification'};
   const saved=await supabase.from('orders').insert(order);
   if(saved.error){if(appliedDiscount.code)await supabase.rpc('sera_release_discount_code',{p_code:appliedDiscount.code,p_order_id:id});await supabase.storage.from('payment-receipts').remove([path]);throw saved.error}
