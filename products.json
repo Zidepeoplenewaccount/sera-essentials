@@ -503,5 +503,37 @@
     "image": "",
     "active": true,
     "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-037",
+    "name": "Dark Knuckle Care Gloves",
+    "category": "Beauty",
+    "description": "Soft, washable cotton gloves for your hand-care routine. Wear them after applying your preferred hand cream or moisturiser to help keep hands feeling soft. Available in black and white, in 6-pair and 12-pair packs, with small, medium and large glove sizes.",
+    "price": 12872,
+    "priceBySize": {
+      "6 pairs — S": 12902,
+      "6 pairs — M": 13650,
+      "6 pairs — L": 13680,
+      "12 pairs — S": 21243,
+      "12 pairs — M": 21497,
+      "12 pairs — L": 22560
+    },
+    "image": "",
+    "active": true,
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Black",
+        "White"
+      ],
+      "sizes": [
+        "6 pairs — S",
+        "6 pairs — M",
+        "6 pairs — L",
+        "12 pairs — S",
+        "12 pairs — M",
+        "12 pairs — L"
+      ]
+    }
   }
 ]
