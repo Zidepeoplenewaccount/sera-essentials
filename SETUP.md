@@ -41,3 +41,10 @@ Commit/push the repository. Enable GitHub Pages from Settings > Pages > Deploy f
 - Points are credited once per order when an admin changes its status to Payment verified or another paid status.
 - Run `loyalty-rewards-migration.sql` in Supabase SQL Editor before using the rewards feature on the live website.
 - The daily scratch game awards one bonus point per day and is currently stored in the visitor's browser on that device. It is a promotional bonus and must be checked manually before redemption; clearing browser data or changing devices will reset that game balance.
+
+
+## Discount code redemption
+- Admins issue single-use discount codes in Admin > Discount codes after confirming the customer's verified points balance.
+- Codes redeem points in multiples of 6 (6 points = ₦100), are tied to the customer's WhatsApp number, and expire after 90 days.
+- Customers enter their code and the same phone number at checkout. Codes are reserved when an order is submitted, redeemed only after payment verification, and released if payment is rejected.
+- Run the latest `loyalty-rewards-migration.sql` in Supabase SQL Editor to enable the discount-code table and secure functions.
