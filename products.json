@@ -493,5 +493,15 @@
         "Without battery"
       ]
     }
+  },
+  {
+    "id": "sera-036",
+    "name": "Sera Spearmint Tea (Pack of 10)",
+    "category": "Wellness",
+    "description": "A pack of 10 Sera Spearmint Tea.",
+    "price": 15000,
+    "image": "",
+    "active": true,
+    "stockStatus": "in_stock"
   }
 ]
