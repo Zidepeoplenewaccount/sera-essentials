@@ -178,7 +178,7 @@
     "name": "Dermaroller",
     "category": "Beauty",
     "description": "A handheld dermaroller available in different needle lengths. Select your preferred size. Longer needle options should be used only by appropriately trained professionals. Do not share the device.",
-    "price": 4540,
+    "price": 4560,
     "image": "images/IMG_5865 2.JPG",
     "active": true,
     "stockStatus": "in_stock",
@@ -473,7 +473,7 @@
     "name": "Portable Mini Hand Clip Fan (4-Blade)",
     "category": "Electronics",
     "description": "A compact 4-blade portable fan that can be clipped onto a surface or used as a small desktop fan. USB-powered and designed for quiet cooling. Choose whether you want the battery included.",
-    "price": 8980,
+    "price": 8940,
     "priceBySize": {
       "With battery": 9970,
       "Without battery": 8940
