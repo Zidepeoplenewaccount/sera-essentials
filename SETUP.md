@@ -34,3 +34,10 @@ Commit/push the repository. Enable GitHub Pages from Settings > Pages > Deploy f
 - GitHub Pages is static hosting. Supabase provides authentication, database and private receipt storage.
 - The SQL policies permit anonymous order creation and receipt upload, but only authenticated IDs listed in `admin_users` can read orders and receipts.
 - The store does not yet include a payment gateway or automatic bank reconciliation.
+
+## SERA loyalty rewards
+- Customers earn 1 point for every ₦1,500 spent on products (delivery fees and services do not count).
+- 6 points are worth ₦100 off a future order. Discounts are applied manually by SERA after checking the customer's order reference and reward screenshot.
+- Points are credited once per order when an admin changes its status to Payment verified or another paid status.
+- Run `loyalty-rewards-migration.sql` in Supabase SQL Editor before using the rewards feature on the live website.
+- The daily scratch game awards one bonus point per day and is currently stored in the visitor's browser on that device. It is a promotional bonus and must be checked manually before redemption; clearing browser data or changing devices will reset that game balance.
