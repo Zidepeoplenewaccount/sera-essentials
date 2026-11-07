@@ -416,10 +416,23 @@
     "name": "Facial Mist Spray",
     "category": "Beauty",
     "description": "A refillable facial mist spray bottle for refreshing your skin.",
-    "price": 3970,
-    "image": "",
+    "price": 6000,
+    "image": "images/Hd10d6fc9bc914c6999edaa214bf8c06bn.avif",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "types": [
+        "Square design",
+        "Cylinder design"
+      ],
+      "colours": [
+        "Light blue",
+        "Pink",
+        "White",
+        "Black",
+        "Transparent cover"
+      ]
+    }
   },
   {
     "id": "sera-033",
