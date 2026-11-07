@@ -243,16 +243,6 @@
     "stockStatus": "in_stock"
   },
   {
-    "id": "sera-014",
-    "name": "Stainless Gua Sha (6cm)",
-    "category": "Beauty",
-    "description": "A compact 6cm stainless-steel gua sha massage tool.",
-    "price": 3480,
-    "image": "",
-    "active": true,
-    "stockStatus": "in_stock"
-  },
-  {
     "id": "sera-015",
     "name": "Hair Pressure Spray",
     "category": "Beauty",
