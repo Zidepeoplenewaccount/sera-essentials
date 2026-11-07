@@ -26,7 +26,7 @@ revoke all on public.sera_discount_codes from anon, authenticated;
 
 create or replace function public.sera_phone_digits(p_phone text)
 returns text language sql immutable as $$
- select regexp_replace(coalesce(p_phone,''),'[^0-9]','','g')
+ select case when regexp_replace(coalesce(p_phone,''),'[^0-9]','','g') like '0%' then '234'||substr(regexp_replace(coalesce(p_phone,''),'[^0-9]','','g'),2) else regexp_replace(coalesce(p_phone,''),'[^0-9]','','g') end
 $$;
 
 create or replace function public.sera_issue_discount_code(p_phone text,p_points integer)
@@ -41,7 +41,7 @@ begin
  select coalesce(sum(o.loyalty_points),0)::integer into v_balance from public.orders o
  where public.sera_phone_digits(o.phone)=v_phone and o.loyalty_credited_at is not null
  and o.status in ('payment_verified','processing','ordered_from_supplier','dispatched','out_for_delivery','delivered');
- v_balance:=v_balance-coalesce((select sum(c.points)::integer from public.sera_discount_codes c where c.phone_digits=v_phone and c.status in ('issued','reserved','redeemed')),0);
+ v_balance:=v_balance-coalesce((select sum(c.points)::integer from public.sera_discount_codes c where c.phone_digits=v_phone and c.status in ('issued','reserved','redeemed') and (c.status<>'issued' or c.expires_at>now())),0);
  if p_points>v_balance then raise exception 'Customer only has % unredeemed points available',greatest(v_balance,0); end if;
  v_code:='SERA-'||upper(substr(encode(gen_random_bytes(5),'hex'),1,8));
  insert into public.sera_discount_codes(code,phone_digits,points,discount_amount)
