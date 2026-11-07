@@ -243,13 +243,32 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
 @media(max-width:800px){.shop-area > section#shop{padding:44px 18px 52px!important}.shop-area > section#shop > #products{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}}
 @media(max-width:600px){.shop-area > section#shop .toolbar{gap:8px!important}.shop-area > section#shop .toolbar .currency-select{flex:0 0 auto!important;max-width:132px!important}.shop-area > section#shop .toolbar .search{flex:1 1 150px!important;min-width:130px!important;width:auto!important}.shop-area > section#shop .sera-filters{position:absolute!important;top:auto!important;bottom:calc(100% + 10px)!important;right:0!important;left:auto!important;width:min(620px,calc(100vw - 24px))!important;max-height:78vh!important;overflow-y:auto!important}}
 @media(max-width:430px){.shop-area > section#shop{padding-left:12px!important;padding-right:12px!important}.shop-area > section#shop > #products{gap:9px!important}}
+
+/* Guided search suggestion panels */
+.search-shell{position:relative;min-width:0;flex:1}
+.search-shell>.search{display:block;width:100%}
+.search-suggestions{display:none;position:absolute;top:calc(100% + 9px);left:0;right:0;z-index:160;background:#fff;border:1px solid #e8dff0;border-radius:13px;box-shadow:0 16px 38px rgba(40,20,55,.16);padding:9px;max-height:min(420px,65vh);overflow-y:auto}
+.search-suggestions.open{display:block}
+.nav-search{overflow:visible}
+.nav-search .search-shell{min-width:0}
+.nav-search .search-shell input{width:100%;min-width:0;padding-right:8px}
+.nav-search .search-suggestions{min-width:270px;left:-1px;right:-45px}
+.suggestion-label{padding:8px 10px 5px;color:#8a7c91;font-size:10px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.suggestion-item{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px;border:0!important;border-radius:8px!important;background:#fff!important;color:#35243f!important;text-align:left;cursor:pointer;font-size:12px;font-weight:650}
+.suggestion-item:hover,.suggestion-item:focus{background:#f5efff!important;color:#6d28d9!important;outline:0}
+.suggestion-item small{flex-shrink:0;color:#8a7c91;font-size:10px;font-weight:600}
+.suggestion-empty{padding:14px 10px;color:#716779;font-size:12px;line-height:1.5}
+.shop-search-shell{width:min(260px,45vw);flex:0 1 260px}
+@media(max-width:800px){.nav-search{overflow:visible}.nav-search .search-suggestions{min-width:0;right:-45px}.shop-search-shell{width:min(100%,320px);flex:1 1 220px}}
+@media(max-width:430px){.nav-search .search-suggestions{right:0;min-width:0}.shop-search-shell{width:100%;flex-basis:100%}}
+
 </style>
 </head>
 <body>
   <div class="announcement">GOOD FINDS. GOOD FEELING. WELCOME TO SERA ESSENTIALS.</div>
   <header><nav class="nav">
     <a class="brand" href="#" aria-label="SERA Beauty Essentials homepage"><img src="sera-logo.svg" alt="SERA Beauty Essentials. Look Good. Live Better."></a>
-    <form class="nav-search" id="navSearchForm" role="search"><input id="navSearch" type="search" placeholder="Search products..." aria-label="Search products"><button type="submit" aria-label="Search">⌕</button></form><div class="navlinks"><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#skin-consultations">Skin consultations</a><a href="#about">Our story</a><a href="https://wa.me/2349067756473?text=Hello%20SERA%20ESSENTIALS%2C%20I%E2%80%99d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">Contact us</a></div>
+    <form class="nav-search" id="navSearchForm" role="search"><div class="search-shell"><input id="navSearch" type="search" placeholder="Search products..." aria-label="Search products" autocomplete="off" aria-controls="navSearchSuggestions" aria-expanded="false"><div class="search-suggestions" id="navSearchSuggestions" role="listbox" aria-label="Search suggestions"></div></div><button type="submit" aria-label="Search">⌕</button></form><div class="navlinks"><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#skin-consultations">Skin consultations</a><a href="#about">Our story</a><a href="https://wa.me/2349067756473?text=Hello%20SERA%20ESSENTIALS%2C%20I%E2%80%99d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">Contact us</a></div>
     <div class="nav-actions"><button class="cart-btn" id="showWishlist" type="button">♡ Saved (<span id="wishCount">0</span>)</button><button class="cart-btn" id="openCart">Your bag (<span id="cartCount">0</span>)</button></div>
   </nav></header>
   <main>
@@ -273,7 +292,7 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
         <a class="category" href="#shop" data-category="Everyday" style="background-image:url(https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=900&q=85)"><small>04 / Daily life</small><b>Everyday essentials ↗</b></a>
       </div>
     </section>
-    <div class="shop-area"><section id="shop"><div class="section-head"><div><div class="eyebrow">The Sera selection</div><h2>Explore the collection</h2></div><div class="toolbar"><label class="hint" for="currencyDisplay">Show estimate:</label><select class="currency-select" id="currencyDisplay" aria-label="Display estimated currency"><option value="NGN">NGN only</option><option value="USD">USD estimate</option><option value="GBP">GBP estimate</option></select><input class="search" id="search" type="search" placeholder="Search products..." aria-label="Search products"><div class="filter-wrap"><button type="button" class="filter-toggle" id="filterToggle" aria-label="Open product filters" aria-expanded="false" aria-controls="productFilters"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10m-7 6h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="filter-active-count" id="filterActiveCount" hidden>0</span></button><div class="sera-filters" id="productFilters" aria-label="Product filters">
+    <div class="shop-area"><section id="shop"><div class="section-head"><div><div class="eyebrow">The Sera selection</div><h2>Explore the collection</h2></div><div class="toolbar"><label class="hint" for="currencyDisplay">Show estimate:</label><select class="currency-select" id="currencyDisplay" aria-label="Display estimated currency"><option value="NGN">NGN only</option><option value="USD">USD estimate</option><option value="GBP">GBP estimate</option></select><div class="search-shell shop-search-shell"><input class="search" id="search" type="search" placeholder="Search products..." aria-label="Search products" autocomplete="off" aria-controls="shopSearchSuggestions" aria-expanded="false"><div class="search-suggestions" id="shopSearchSuggestions" role="listbox" aria-label="Search suggestions"></div></div><div class="filter-wrap"><button type="button" class="filter-toggle" id="filterToggle" aria-label="Open product filters" aria-expanded="false" aria-controls="productFilters"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10m-7 6h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="filter-active-count" id="filterActiveCount" hidden>0</span></button><div class="sera-filters" id="productFilters" aria-label="Product filters">
       <div class="filter-heading"><strong>Filter products</strong><div class="filter-heading-actions"><button type="button" id="clearFilters">Clear all</button><button type="button" id="closeFilters" aria-label="Close filters">Done</button></div></div>
       <div class="filter-controls">
         <label>Category<select id="filterCategory"><option value="">All categories</option></select></label>
@@ -392,7 +411,34 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFilters()});
     document.getElementById('closeFilters').addEventListener('click',closeFilters);
     function applyProductFilters(){const q=String(shopSearch.value||'').trim().toLowerCase(),category=filterCategory.value,colour=filterColour.value,min=filterMin.value===''?0:Number(filterMin.value),max=filterMax.value===''?Infinity:Number(filterMax.value);let list=products.filter(p=>{const text=(p.name+' '+p.category+' '+(p.description||'')).toLowerCase(),colours=(p.variants&&p.variants.colours)||[];return(!q||text.includes(q))&&(!category||p.category===category)&&(!colour||colours.some(c=>c.toLowerCase()===colour.toLowerCase()))&&Number(p.price)>=min&&Number(p.price)<=max});if(filterSort.value==='price-low')list.sort((a,b)=>Number(a.price)-Number(b.price));else if(filterSort.value==='price-high')list.sort((a,b)=>Number(b.price)-Number(a.price));else if(filterSort.value==='name')list.sort((a,b)=>a.name.localeCompare(b.name));document.getElementById('filterCount').textContent='';updateFilterButton();drawProducts(list);}
-    const runProductSearch=value=>{shopSearch.value=value||'';applyProductFilters()};shopSearch.addEventListener('input',applyProductFilters);navSearch.addEventListener('input',e=>runProductSearch(e.target.value));document.getElementById('navSearchForm').addEventListener('submit',e=>{e.preventDefault();runProductSearch(navSearch.value);document.getElementById('shop').scrollIntoView({behavior:'smooth'});});
+    const runProductSearch=value=>{shopSearch.value=value||'';navSearch.value=value||'';applyProductFilters();};
+    const suggestionPanels=[{input:navSearch,panel:document.getElementById('navSearchSuggestions')},{input:shopSearch,panel:document.getElementById('shopSearchSuggestions')}];
+    function closeSearchSuggestions(){suggestionPanels.forEach(({input,panel})=>{panel.classList.remove('open');input.setAttribute('aria-expanded','false')});}
+    function showSearchSuggestions(input,panel){
+      const q=String(input.value||'').trim().toLowerCase();
+      const active=products.filter(p=>p.active!==false);
+      const matches=active.filter(p=>!q||(p.name+' '+p.category+' '+(p.description||'')+' '+(((p.variants||{}).colours)||[]).join(' ')).toLowerCase().includes(q)).slice(0,7);
+      const categories=[...new Set(active.map(p=>p.category).filter(Boolean))].filter(c=>!q||c.toLowerCase().includes(q)).slice(0,4);
+      let html='';
+      if(!q){
+        html='<div class="suggestion-label">Popular searches</div>'+['Beauty','Skincare','Face care','Fashion','Home','Everyday'].map(v=>'<button type="button" class="suggestion-item" role="option" data-query="'+esc(v)+'"><span>'+esc(v)+'</span><small>Explore</small></button>').join('');
+        if(matches.length)html+='<div class="suggestion-label">Popular finds</div>'+matches.slice(0,4).map(p=>'<button type="button" class="suggestion-item" role="option" data-query="'+esc(p.name)+'"><span>'+esc(p.name)+'</span><small>'+money(p.price)+'</small></button>').join('');
+      }else{
+        if(categories.length)html+='<div class="suggestion-label">Categories</div>'+categories.map(c=>'<button type="button" class="suggestion-item" role="option" data-query="'+esc(c)+'"><span>'+esc(c)+'</span><small>Category</small></button>').join('');
+        if(matches.length)html+='<div class="suggestion-label">Matching products</div>'+matches.map(p=>'<button type="button" class="suggestion-item" role="option" data-query="'+esc(p.name)+'"><span>'+esc(p.name)+'</span><small>'+money(p.price)+'</small></button>').join('');
+        if(!html)html='<div class="suggestion-empty">No matching products found. Try another name or category.</div>';
+      }
+      panel.innerHTML=html;panel.classList.add('open');input.setAttribute('aria-expanded','true');
+      panel.querySelectorAll('[data-query]').forEach(btn=>btn.addEventListener('click',()=>{runProductSearch(btn.dataset.query);closeSearchSuggestions();document.getElementById('shop').scrollIntoView({behavior:'smooth',block:'start'});shopSearch.focus();}));
+    }
+    suggestionPanels.forEach(({input,panel})=>{
+      input.addEventListener('focus',()=>showSearchSuggestions(input,panel));
+      input.addEventListener('click',()=>showSearchSuggestions(input,panel));
+      input.addEventListener('input',()=>{runProductSearch(input.value);showSearchSuggestions(input,panel);});
+      input.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearchSuggestions();input.blur();}});
+    });
+    document.addEventListener('click',e=>{if(!e.target.closest('.search-shell'))closeSearchSuggestions();});
+    document.getElementById('navSearchForm').addEventListener('submit',e=>{e.preventDefault();runProductSearch(navSearch.value);closeSearchSuggestions();document.getElementById('shop').scrollIntoView({behavior:'smooth'});});
     [filterCategory,filterColour,filterMin,filterMax,filterSort].forEach(el=>el.addEventListener('input',applyProductFilters));document.getElementById('clearFilters').addEventListener('click',()=>{shopSearch.value='';navSearch.value='';filterCategory.value='';filterColour.value='';filterMin.value='';filterMax.value='';filterSort.value='featured';wishlistMode=false;applyProductFilters()});
     document.querySelectorAll('[data-category]').forEach(a=>a.addEventListener('click',()=>{const c=a.dataset.category;shopSearch.value='';filterCategory.value='';filterColour.value='';const match=[...filterCategory.options].find(o=>o.value.toLowerCase().includes(c.toLowerCase()));if(match)filterCategory.value=match.value;else shopSearch.value=c;applyProductFilters()}));
     async function loadProductCatalogue(){
