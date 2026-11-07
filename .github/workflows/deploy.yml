@@ -39,3 +39,4 @@ jobs:
             **/.github/**
             **/README*
             **/supabase-setup.sql
+            images/foamy-bubbling-maker.jpg
