@@ -409,6 +409,11 @@
         "Purple",
         "Sky Blue"
       ]
+    },
+    "priceBySize": {
+      "Natural Stone": 30000,
+      "Rose Quartz": 10000,
+      "Stainless": 36000
     }
   },
   {
