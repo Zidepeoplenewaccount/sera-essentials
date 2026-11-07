@@ -215,11 +215,22 @@
     "id": "sera-012",
     "name": "Foamy Bubbling Maker",
     "category": "Beauty",
-    "description": "A foaming tool for creating a lather with your facial cleanser.",
-    "price": 2460,
-    "image": "",
+    "description": "A reusable foaming cup that helps turn your facial cleanser into a rich, airy lather. Choose your preferred design and colour.",
+    "price": 6337,
+    "image": "images/foamy-bubbling-maker.jpg",
     "active": true,
-    "stockStatus": "in_stock"
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Pink",
+        "Purple",
+        "White"
+      ],
+      "sizes": [
+        "Square",
+        "Circular"
+      ]
+    }
   },
   {
     "id": "sera-013",
