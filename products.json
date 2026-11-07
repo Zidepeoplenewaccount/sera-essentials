@@ -146,7 +146,7 @@
     "category": "Beauty",
     "description": "A pack of 5 soft lemon face sponges for cleansing and removing face masks.",
     "price": 3000,
-    "image": "",
+    "image": "images/lemon-face-sponges.jpg",
     "active": true,
     "stockStatus": "in_stock"
   },
@@ -179,7 +179,7 @@
     "category": "Beauty",
     "description": "A handheld dermaroller available in different needle lengths. Select your preferred size. Longer needle options should be used only by appropriately trained professionals. Do not share the device.",
     "price": 4600,
-    "image": "",
+    "image": "images/dermaroller.jpg",
     "active": true,
     "stockStatus": "in_stock",
     "priceBySize": {
@@ -454,7 +454,7 @@
     "category": "Beauty",
     "description": "A pair of mild and soft silicone facial mask brushes, suitable for all skin types. Formaldehyde free. Choose any two colours for your pair.",
     "price": 2500,
-    "image": "",
+    "image": "images/silicone-facial-mask-brush.jpg",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
@@ -478,7 +478,7 @@
       "With battery": 10000,
       "Without battery": 9000
     },
-    "image": "",
+    "image": "images/portable-mini-hand-clip-fan.jpg",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
