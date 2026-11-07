@@ -309,6 +309,26 @@
     "stockStatus": "in_stock"
   },
   {
+    "id": "sera-027",
+    "name": "Yellow Face Sponges (10 Pieces)",
+    "category": "Beauty",
+    "description": "Pack of 10 facial cleansing sponges. Colour: yellow.",
+    "price": 2940,
+    "image": "",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-028",
+    "name": "Pink Face Sponges (10 Pieces)",
+    "category": "Beauty",
+    "description": "Pack of 10 facial cleansing sponges. Colour: pink.",
+    "price": 2960,
+    "image": "",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
     "id": "sera-021",
     "name": "Cotton Pad Jar",
     "category": "Beauty",
@@ -365,26 +385,6 @@
     "category": "Beauty",
     "description": "An electronic sonic facial cleansing brush. Follow the manufacturer's usage and cleaning instructions.",
     "price": 6470,
-    "image": "",
-    "active": true,
-    "stockStatus": "in_stock"
-  },
-  {
-    "id": "sera-027",
-    "name": "Yellow Face Sponges (10 Pieces)",
-    "category": "Beauty",
-    "description": "Pack of 10 facial cleansing sponges. Colour: yellow.",
-    "price": 2940,
-    "image": "",
-    "active": true,
-    "stockStatus": "in_stock"
-  },
-  {
-    "id": "sera-028",
-    "name": "Pink Face Sponges (10 Pieces)",
-    "category": "Beauty",
-    "description": "Pack of 10 facial cleansing sponges. Colour: pink.",
-    "price": 2960,
     "image": "",
     "active": true,
     "stockStatus": "in_stock"
