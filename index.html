@@ -78,7 +78,24 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
 .deal-card h2{background:linear-gradient(90deg,var(--berry),var(--red),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:800px){.hero-art{box-shadow:8px 8px 0 rgba(255,212,71,.55),-5px -5px 0 rgba(57,136,232,.13)}}
 
-</style>
+/* SHOP-FIRST LANDING */
+    .hero,.trust,#categories{display:none!important}
+    .shop-area{order:-1}
+    .shop-area section{padding-top:24px;padding-bottom:64px}
+    .shop-area .section-head{margin-bottom:18px}
+    .shop-area .section-head h2{font-size:clamp(28px,3.5vw,38px)}
+    @media(max-width:800px){
+      .shop-area section{padding:18px 18px 48px}
+      .shop-area .section-head{gap:12px;margin-bottom:14px}
+      .shop-area .toolbar{width:100%;gap:8px}
+      .shop-area .toolbar .hint{display:none}
+      .shop-area .currency-select{padding:9px 10px}
+      .shop-area .search{flex:1;width:auto;min-width:120px;padding:9px 12px}
+      .shop-area .wishlist-bar{margin-bottom:12px!important}
+      .shop-area .sera-filters{padding:12px;margin-bottom:14px}
+      .shop-area .filter-controls{gap:8px}
+    }
+  </style>
 </head>
 <body>
   <div class="announcement">GOOD FINDS. GOOD FEELING. WELCOME TO SERA ESSENTIALS.</div>
