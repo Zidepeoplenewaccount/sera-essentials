@@ -262,6 +262,14 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
 @media(max-width:800px){.nav-search{overflow:visible}.nav-search .search-suggestions{min-width:0;right:-45px}.shop-search-shell{width:min(100%,320px);flex:1 1 220px}}
 @media(max-width:430px){.nav-search .search-suggestions{right:0;min-width:0}.shop-search-shell{width:100%;flex-basis:100%}}
 
+
+    .play-rewards{max-width:1150px;margin:28px auto 20px;padding:26px 30px;display:grid;grid-template-columns:1.2fr .8fr;gap:25px;align-items:center;border:1px solid #eadcf5;border-radius:18px;background:linear-gradient(115deg,#f1eaff,#fff0f7 58%,#fff4df)}
+    .play-rewards h2{font:500 clamp(28px,4vw,38px) Georgia,serif;color:var(--berry);margin:8px 0}
+    .play-rewards p{font-size:13px;line-height:1.7;color:var(--muted);max-width:520px}
+    .play-reward-balance{display:flex;align-items:center;gap:12px;margin-top:12px}.play-reward-balance strong{font:700 28px Georgia,serif;color:var(--berry)}.play-reward-balance span,.play-reward-value{font-size:12px;color:#655a61}
+    .scratch-card{min-height:190px;border-radius:16px;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#6d28d9,#a855f7 55%,#ff4f9a);color:#fff;box-shadow:0 12px 28px rgba(109,40,217,.18)}
+    .scratch-card-label{font-size:10px;letter-spacing:.18em;font-weight:800}.scratch-card strong{font:30px Georgia,serif;margin:13px 0}.scratch-card .primary{background:#fff;color:var(--berry);box-shadow:none}.scratch-card small{font-size:10px;opacity:.9;margin-top:12px;line-height:1.5}
+    @media(max-width:700px){.play-rewards{margin:18px;padding:22px 18px;grid-template-columns:1fr;gap:14px}.scratch-card{min-height:165px}}
 </style>
 </head>
 <body>
@@ -284,6 +292,10 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
       <span><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ff7a27" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.1-5.1A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 9.5c.8 2 2.2 3.4 4.5 4.5"/></svg> Helpful customer support</span>
       <span><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#35b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg> More finds to explore</span>
     </div>
+    <section class="play-rewards" id="play-rewards" aria-labelledby="playRewardsTitle">
+      <div class="play-rewards-copy"><div class="eyebrow">A little reward for showing up</div><h2 id="playRewardsTitle">Play & earn with SERA</h2><p>Try the daily scratch card to collect a bonus point. Shopping rewards are added after your payment is verified.</p><div class="play-reward-balance"><strong id="gamePoints">0</strong><span>game points collected on this device</span></div><p class="play-reward-value" id="gameRewardValue">6 points = ₦100 off your next order</p></div>
+      <div class="scratch-card-wrap"><div class="scratch-card" id="scratchCard"><span class="scratch-card-label">TODAY'S LITTLE SURPRISE</span><strong id="scratchPrize">Scratch to reveal</strong><button type="button" id="scratchButton" class="primary">Scratch & earn</button><small id="scratchMessage">One play per day. One bonus point when you play.</small></div></div>
+    </section>
     <section id="categories"><div class="section-head"><div><div class="eyebrow">Explore your kind of find</div><h2>Shop by category</h2></div><p>A growing collection across the things you use, wear, enjoy and need.</p></div>
       <div class="categories">
         <a class="category" href="#shop" data-category="Beauty" style="background-image:url(https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=85)"><small>01 / Self-care</small><b>Beauty & care ↗</b></a>
@@ -466,6 +478,15 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
       root.innerHTML='<div class="empty"><h3>We couldn’t load the products.</h3><p>Please check your connection and try again. Your shopping catalogue is still available.</p><button type="button" class="primary" id="retryProducts">Try again</button></div>';
       document.getElementById('retryProducts').addEventListener('click',loadProductCatalogue);
     }
+    (function initDailyScratch(){
+      const pointsKey='sera_game_bonus_points',playedKey='sera_game_last_played';
+      const points=()=>Math.max(0,Number(localStorage.getItem(pointsKey)||0));
+      const today=()=>new Date().toLocaleDateString('en-CA');
+      const balance=document.getElementById('gamePoints'),value=document.getElementById('gameRewardValue'),button=document.getElementById('scratchButton'),prize=document.getElementById('scratchPrize'),message=document.getElementById('scratchMessage');
+      function render(){const total=points(),played=localStorage.getItem(playedKey)===today();balance.textContent=total;value.textContent=Math.floor(total/6)+' × ₦100 available from game points (6 points = ₦100)';button.disabled=played;button.textContent=played?'Come back tomorrow':'Scratch & earn';if(played){prize.textContent='You earned 1 point today';message.textContent='Your next daily scratch card will be ready tomorrow.'}}
+      button.addEventListener('click',()=>{if(localStorage.getItem(playedKey)===today())return;localStorage.setItem(pointsKey,String(points()+1));localStorage.setItem(playedKey,today());prize.textContent='You earned 1 bonus point!';message.textContent='Take a screenshot of your points and order reference when requesting a discount. SERA will verify rewards manually.';render();prize.textContent='You earned 1 bonus point!'});
+      render();
+    })();
     loadProductCatalogue();
     const skinServices={
       'sera-service-skin-reset':{name:'The 8-Week Skin Reset',price:100000},
