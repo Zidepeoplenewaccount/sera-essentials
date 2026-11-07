@@ -81,7 +81,7 @@
     "category": "Beauty",
     "description": "A soft headband and wristband set to help keep hair and water away while cleansing and completing your skincare routine.",
     "price": 5000,
-    "image": "images/skincare-routine-head-wrist-bands.jpg",
+    "image": "images/47C7A045-BC18-4B84-827A-C1C3878FE90A.PNG",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
@@ -104,7 +104,7 @@
     "category": "Beauty",
     "description": "A handheld body massage roller for your self-care routine.",
     "price": 8000,
-    "image": "images/cellulite-roller.jpg",
+    "image": "images/C2CDE486-6008-4C96-A270-90D9F43A8FD3.PNG",
     "active": true,
     "stockStatus": "low_stock"
   },
@@ -114,7 +114,7 @@
     "category": "Beauty",
     "description": "A plush headband and wristband set for a comfortable, less-messy skincare routine.",
     "price": 6000,
-    "image": "images/puffy-head-wrist-bands.jpg",
+    "image": "images/IMG_5862.JPG",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
@@ -131,7 +131,7 @@
     "category": "Beauty",
     "description": "Soft, breathable cotton face mask sheets for DIY skincare treatments. Each pack contains 10 disposable sheets.",
     "price": 3580,
-    "image": "images/disposable-diy-face-mask-sheets.jpg",
+    "image": "images/IMG_5863.JPG",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
@@ -146,7 +146,7 @@
     "category": "Beauty",
     "description": "A pack of 5 soft lemon face sponges for cleansing and removing face masks.",
     "price": 3000,
-    "image": "images/lemon-face-sponges.jpg",
+    "image": "images/IMG_5859.WEBP",
     "active": true,
     "stockStatus": "in_stock"
   },
@@ -156,7 +156,7 @@
     "category": "Beauty",
     "description": "A soft microfibre towel designed to help absorb moisture from hair after washing.",
     "price": 5000,
-    "image": "images/microfibre-hair-towel.jpg",
+    "image": "images/IMG_5864.JPG",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
@@ -179,7 +179,7 @@
     "category": "Beauty",
     "description": "A handheld dermaroller available in different needle lengths. Select your preferred size. Longer needle options should be used only by appropriately trained professionals. Do not share the device.",
     "price": 4600,
-    "image": "images/dermaroller.jpg",
+    "image": "images/IMG_5865 2.JPG",
     "active": true,
     "stockStatus": "in_stock",
     "priceBySize": {
@@ -478,7 +478,7 @@
       "With battery": 10000,
       "Without battery": 9000
     },
-    "image": "images/portable-mini-hand-clip-fan.jpg",
+    "image": "images/IMG_5853.JPG",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
