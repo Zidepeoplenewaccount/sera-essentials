@@ -39,7 +39,10 @@ create table if not exists public.orders (
   status text not null default 'pending_verification'
     check (status in ('pending_verification','payment_verified','payment_rejected','processing','ordered_from_supplier','dispatched','out_for_delivery','delivered')),
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  updated_at timestamptz not null default now(),
+  loyalty_points integer not null default 0 check (loyalty_points >= 0),
+  loyalty_discount numeric(12,2) not null default 0 check (loyalty_discount >= 0),
+  loyalty_credited_at timestamptz
 );
 alter table public.orders enable row level security;
 
