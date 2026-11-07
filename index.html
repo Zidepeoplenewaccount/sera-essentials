@@ -168,7 +168,41 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
   .product-actions button{font-size:9px;padding:6px 4px}
 }
 
-</style>
+
+/* Keep the shop catalogue centred and full-width within its section. */
+.shop-area #shop{
+  display:block!important;
+  position:relative!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+  float:none!important;
+  width:min(1200px,100%)!important;
+  max-width:1200px!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+.shop-area #shop .products{
+  display:grid!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  padding:0!important;
+  position:static!important;
+  left:auto!important;
+  right:auto!important;
+  transform:none!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+}
+@media(max-width:800px){
+  .shop-area #shop .products{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:430px){
+  .shop-area #shop{width:100%!important}
+  .shop-area #shop .products{gap:9px!important}
+}
+
+  </style>
 </head>
 <body>
   <div class="announcement">GOOD FINDS. GOOD FEELING. WELCOME TO SERA ESSENTIALS.</div>
