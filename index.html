@@ -111,13 +111,33 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
   .nav-actions .cart-btn{padding:8px 8px;font-size:10px}
 }
 
+
+/* Final mobile refinements: logo and shortcuts share the top row. */
+@media(max-width:600px){
+  .nav{display:flex;flex-wrap:wrap;align-items:center;column-gap:8px;row-gap:10px}
+  .brand{order:0;flex:0 1 auto;min-width:0}
+  .brand img{width:clamp(104px,32vw,125px);max-height:46px}
+  .nav-actions{order:1;margin-left:auto;display:flex;flex:0 0 auto;gap:5px}
+  .nav-actions .cart-btn{padding:8px 9px;font-size:10px;line-height:1.1;white-space:nowrap}
+  .nav-search{order:2;flex:0 0 100%;width:100%;min-width:0}
+  .navlinks{order:3;flex:0 0 100%;width:100%}
+  .product-actions{display:flex;gap:6px}
+  .product-actions button{min-height:34px;padding:7px 5px;font-size:10px;line-height:1.1}
+  .product-actions .like-btn{flex:0 0 34px;width:34px!important;min-height:34px;max-width:34px!important;padding:5px 2px!important;font-size:15px!important}
+}
+@media(max-width:360px){
+  .brand img{width:104px}
+  .nav-actions .cart-btn{padding:7px 7px;font-size:9px}
+  .product-actions button{font-size:9px;padding:6px 4px}
+}
+
 </style>
 </head>
 <body>
   <div class="announcement">GOOD FINDS. GOOD FEELING. WELCOME TO SERA ESSENTIALS.</div>
   <header><nav class="nav">
     <a class="brand" href="#" aria-label="SERA Beauty Essentials homepage"><img src="sera-logo.svg" alt="SERA Beauty Essentials. Look Good. Live Better."></a>
-    <form class="nav-search" id="navSearchForm" role="search"><input id="navSearch" type="search" placeholder="Search products..." aria-label="Search products"><button type="submit" aria-label="Search">⌕</button></form><div class="navlinks"><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#about">Our story</a><a href="#contact">Contact us</a></div>
+    <form class="nav-search" id="navSearchForm" role="search"><input id="navSearch" type="search" placeholder="Search products..." aria-label="Search products"><button type="submit" aria-label="Search">⌕</button></form><div class="navlinks"><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#about">Our story</a><a href="https://wa.me/2349067756473?text=Hello%20SERA%20ESSENTIALS%2C%20I%E2%80%99d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">Contact us</a></div>
     <div class="nav-actions"><button class="cart-btn" id="showWishlist" type="button">♡ Saved (<span id="wishCount">0</span>)</button><button class="cart-btn" id="openCart">Your bag (<span id="cartCount">0</span>)</button></div>
   </nav></header>
   <main>
