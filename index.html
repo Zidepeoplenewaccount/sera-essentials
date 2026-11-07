@@ -428,3 +428,66 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
   </script>
 </body>
 </html>
+
+/* SHOP HEADER + FILTER POSITION FIX */
+.shop-area > section#shop > .section-head{
+  display:block!important;
+  width:100%!important;
+  margin:0 0 24px!important;
+}
+.shop-area > section#shop > .section-head > div:first-child{
+  width:100%!important;
+  margin:0 0 18px!important;
+}
+.shop-area > section#shop .toolbar{
+  display:flex!important;
+  width:100%!important;
+  max-width:none!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:10px!important;
+  flex-wrap:wrap!important;
+}
+.shop-area > section#shop .toolbar .search{
+  flex:1 1 240px!important;
+  min-width:180px!important;
+  width:auto!important;
+}
+.shop-area > section#shop .filter-wrap{
+  position:relative!important;
+  flex:0 0 auto!important;
+}
+.shop-area > section#shop .sera-filters{
+  top:auto!important;
+  bottom:calc(100% + 10px)!important;
+  right:0!important;
+  left:auto!important;
+  z-index:130!important;
+}
+@media(max-width:600px){
+  .shop-area > section#shop .toolbar{
+    display:flex!important;
+    flex-wrap:wrap!important;
+    align-items:center!important;
+    gap:8px!important;
+  }
+  .shop-area > section#shop .toolbar .currency-select{
+    flex:0 0 auto!important;
+    max-width:132px!important;
+  }
+  .shop-area > section#shop .toolbar .search{
+    flex:1 1 150px!important;
+    min-width:130px!important;
+    width:auto!important;
+  }
+  .shop-area > section#shop .sera-filters{
+    position:absolute!important;
+    top:auto!important;
+    bottom:calc(100% + 10px)!important;
+    right:0!important;
+    left:auto!important;
+    width:min(620px,calc(100vw - 24px))!important;
+    max-height:78vh!important;
+    overflow-y:auto!important;
+  }
+}
