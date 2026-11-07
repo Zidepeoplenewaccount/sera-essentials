@@ -171,36 +171,39 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
 
 
 
-/* FULL-BLEED SHOP: extend the complete shop section to the viewport edges,
-   even if a parent layout later introduces a centred/max-width container. */
+/* SHOP WIDTH FIX: the main element is a normal full-width block.
+   Do not offset the shop with viewport-relative left/margin hacks; those
+   were shifting the section instead of solving its constrained width. */
+main{display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important}
 .shop-area{
   display:block!important;
   position:relative!important;
-  left:50%!important;
-  right:auto!important;
-  width:100vw!important;
-  max-width:100vw!important;
-  margin-left:-50vw!important;
-  margin-right:0!important;
+  inset:auto!important;
+  float:none!important;
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  margin:0!important;
   padding:0!important;
   box-sizing:border-box!important;
-  overflow:clip;
   transform:none!important;
+  overflow:visible!important;
 }
 .shop-area > section#shop{
   display:block!important;
+  position:relative!important;
+  inset:auto!important;
+  float:none!important;
   width:100%!important;
   max-width:none!important;
   min-width:0!important;
   margin:0!important;
   padding:66px 24px 72px!important;
   box-sizing:border-box!important;
-  position:static!important;
-  float:none!important;
   transform:none!important;
 }
-.shop-area > section#shop > .section-head{
-  display:flex!important;
+.shop-area > section#shop > .section-head,
+.shop-area > section#shop > #products{
   width:100%!important;
   max-width:none!important;
   min-width:0!important;
@@ -210,16 +213,11 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
 }
 .shop-area > section#shop > #products{
   display:grid!important;
-  width:100%!important;
-  max-width:none!important;
-  min-width:0!important;
-  margin:0!important;
-  padding:0!important;
   grid-template-columns:repeat(6,minmax(0,1fr))!important;
   gap:16px!important;
   justify-content:stretch!important;
   justify-items:stretch!important;
-  box-sizing:border-box!important;
+  padding:0!important;
 }
 @media(max-width:800px){
   .shop-area > section#shop{padding:44px 18px 52px!important}
@@ -229,8 +227,7 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
   .shop-area > section#shop{padding-left:12px!important;padding-right:12px!important}
   .shop-area > section#shop > #products{gap:9px!important}
 }
-
-  </style>
+</style>
 </head>
 <body>
   <div class="announcement">GOOD FINDS. GOOD FEELING. WELCOME TO SERA ESSENTIALS.</div>
