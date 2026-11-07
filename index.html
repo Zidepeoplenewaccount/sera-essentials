@@ -110,13 +110,18 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
 /* Compact filter control: reveal options only when requested. */
 .toolbar{position:relative}
 .filter-wrap{position:relative;display:inline-flex;align-items:center}
+.filter-wrap.filter-open{z-index:120}
+.filter-wrap.filter-open .sera-filters{z-index:121;pointer-events:auto}
+.filter-heading-actions{display:flex;align-items:center;gap:12px}
+.filter-heading-actions button:last-child{display:none}
+
 .filter-toggle{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:42px;min-height:42px;padding:9px 10px;border:1px solid #e4d8ed;border-radius:999px;background:#fff;color:#54248c;font-size:12px;font-weight:750;cursor:pointer;white-space:nowrap}
 .filter-toggle:hover,.filter-toggle[aria-expanded="true"]{border-color:var(--berry);background:#f7f0ff}
 .filter-toggle svg{width:18px;height:18px}
 .filter-active-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:var(--berry);color:#fff;font-size:10px}
 .sera-filters{display:none;position:absolute;right:0;top:calc(100% + 10px);z-index:35;width:min(620px,calc(100vw - 36px));margin:0;box-shadow:0 18px 45px rgba(42,25,57,.18)}
 .sera-filters.open{display:block}
-@media(max-width:600px){.toolbar{width:100%;gap:9px}.toolbar .search{flex:1;min-width:120px;width:auto}.toolbar .hint{display:none}.filter-toggle{padding:9px 11px}.sera-filters{position:fixed;top:auto;right:18px;left:18px;bottom:18px;width:auto;max-height:75vh;overflow:auto}}
+@media(max-width:600px){.toolbar{width:100%;gap:9px}.toolbar .search{flex:1;min-width:120px;width:auto}.toolbar .hint{display:none}.filter-toggle{padding:9px 11px}.sera-filters{position:fixed;top:auto;right:12px;left:12px;bottom:12px;width:auto;max-height:78vh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;z-index:121}.filter-wrap.filter-open .sera-filters{display:block}.filter-heading-actions button:last-child{display:inline-flex;border:0;border-radius:999px;background:#f1eaff;padding:7px 13px;color:#54248c;font-weight:750;cursor:pointer}}
 
 /* Mobile header: keep the brand and shopping shortcuts on one row. */
 .nav-actions{display:flex;align-items:center;gap:9px;flex-shrink:0}
@@ -187,7 +192,7 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
       </div>
     </section>
     <div class="shop-area"><section id="shop"><div class="section-head"><div><div class="eyebrow">The Sera selection</div><h2>Explore the collection</h2></div><div class="toolbar"><label class="hint" for="currencyDisplay">Show estimate:</label><select class="currency-select" id="currencyDisplay" aria-label="Display estimated currency"><option value="NGN">NGN only</option><option value="USD">USD estimate</option><option value="GBP">GBP estimate</option></select><input class="search" id="search" type="search" placeholder="Search products..." aria-label="Search products"><div class="filter-wrap"><button type="button" class="filter-toggle" id="filterToggle" aria-label="Open product filters" aria-expanded="false" aria-controls="productFilters"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10m-7 6h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="filter-active-count" id="filterActiveCount" hidden>0</span></button><div class="sera-filters" id="productFilters" aria-label="Product filters">
-      <div class="filter-heading"><strong>Filter products</strong><button type="button" id="clearFilters">Clear all</button></div>
+      <div class="filter-heading"><strong>Filter products</strong><div class="filter-heading-actions"><button type="button" id="clearFilters">Clear all</button><button type="button" id="closeFilters" aria-label="Close filters">Done</button></div></div>
       <div class="filter-controls">
         <label>Category<select id="filterCategory"><option value="">All categories</option></select></label>
         <label>Colour<select id="filterColour"><option value="">All colours</option></select></label>
@@ -219,8 +224,8 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
   <script>
     const money = n => new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN',maximumFractionDigits:0}).format(n);
     const estimateMoney = (n,code) => new Intl.NumberFormat(code==='USD'?'en-US':'en-GB',{style:'currency',currency:code,maximumFractionDigits:2}).format(n);
-    let products=[], cart=[], visibleProducts=[], fxRates={USD:null,GBP:null}, wishlist=JSON.parse(localStorage.getItem('sera_wishlist')||'[]'), wishlistMode=false, modalProduct=null;
-    let displayCurrency=localStorage.getItem('sera_display_currency')||'NGN';
+    let products=[], cart=[], visibleProducts=[], fxRates={USD:null,GBP:null}, wishlist=(()=>{try{const saved=JSON.parse(localStorage.getItem('sera_wishlist')||'[]');return Array.isArray(saved)?saved:[]}catch(_){return[]}})(), wishlistMode=false, modalProduct=null;
+    let displayCurrency=(()=>{try{return localStorage.getItem('sera_display_currency')||'NGN'}catch(_){return'NGN'}})();
     const currencySelect=document.getElementById('currencyDisplay');
     currencySelect.value=['NGN','USD','GBP'].includes(displayCurrency)?displayCurrency:'NGN';
     displayCurrency=currencySelect.value;
@@ -291,16 +296,47 @@ footer{background:linear-gradient(115deg,#2c2040 0%,#3a2354 48%,#173c4b 100%);bo
     updateWishlistCount();
     function showDailyDeal(){const deal=products.find(p=>Number(p.discountPrice)>0&&Number(p.discountPrice)<Number(p.price)&&p.active!==false);if(!deal)return;const today=new Date().toISOString().slice(0,10);if(localStorage.getItem('sera_deal_seen')===today)return;document.getElementById('dealContent').innerHTML='<p>'+esc(deal.name)+'</p><div class="deal-price"><span class="old-price">'+money(deal.price)+'</span>'+money(deal.discountPrice)+'</div><p>Limited offer while the deal is available.</p><button class="primary" id="dealShop">Shop this deal</button>';document.getElementById('dealPopup').classList.add('open');localStorage.setItem('sera_deal_seen',today);document.getElementById('dealShop').onclick=()=>{document.getElementById('dealPopup').classList.remove('open');openProduct(deal.id)}}
     document.getElementById('dealClose').onclick=()=>document.getElementById('dealPopup').classList.remove('open');
-    fetch('/products.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error('Product catalogue request failed: '+r.status);return r.json()}).then(data=>{if(!Array.isArray(data))throw new Error('Product catalogue has an invalid format');products=data.filter(p=>p.active!==false);const initialQuery=new URLSearchParams(location.search).get('search')||'';populateProductFilters();if(initialQuery){navSearch.value=initialQuery;runProductSearch(initialQuery)}else applyProductFilters();showDailyDeal()}).catch(error=>{console.error('SERA product catalogue failed to load:',error);drawProducts([])});
     const shopSearch=document.getElementById('search');const navSearch=document.getElementById('navSearch');
     const filterCategory=document.getElementById('filterCategory'),filterColour=document.getElementById('filterColour'),filterMin=document.getElementById('filterMinPrice'),filterMax=document.getElementById('filterMaxPrice'),filterSort=document.getElementById('filterSort');
     function populateProductFilters(){const categories=[...new Set(products.map(p=>p.category).filter(Boolean))].sort();const colours=[...new Set(products.flatMap(p=>(p.variants&&p.variants.colours)||[]))].sort();filterCategory.innerHTML='<option value="">All categories</option>'+categories.map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('');filterColour.innerHTML='<option value="">All colours</option>'+colours.map(v=>'<option value="'+esc(v)+'">'+esc(v)+'</option>').join('');}
     function updateFilterButton(){const count=[filterCategory.value,filterColour.value,filterMin.value,filterMax.value,filterSort.value!=='featured'?filterSort.value:''].filter(Boolean).length,badge=document.getElementById('filterActiveCount');badge.textContent=count;badge.hidden=!count;}
-    const filterToggle=document.getElementById('filterToggle'),filterPanel=document.getElementById('productFilters');filterToggle.addEventListener('click',()=>{const open=!filterPanel.classList.contains('open');filterPanel.classList.toggle('open',open);filterToggle.setAttribute('aria-expanded',String(open));});document.addEventListener('click',e=>{if(!e.target.closest('.filter-wrap')){filterPanel.classList.remove('open');filterToggle.setAttribute('aria-expanded','false');}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){filterPanel.classList.remove('open');filterToggle.setAttribute('aria-expanded','false');}});
+    const filterToggle=document.getElementById('filterToggle'),filterPanel=document.getElementById('productFilters'),filterWrap=filterToggle.closest('.filter-wrap');
+    function closeFilters(){filterPanel.classList.remove('open');filterWrap.classList.remove('filter-open');filterToggle.setAttribute('aria-expanded','false');}
+    function toggleFilters(){const open=!filterPanel.classList.contains('open');if(open){filterPanel.classList.add('open');filterWrap.classList.add('filter-open');filterToggle.setAttribute('aria-expanded','true')}else closeFilters();}
+    filterToggle.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();toggleFilters()});
+    document.addEventListener('click',e=>{if(!e.composedPath().includes(filterWrap))closeFilters()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFilters()});
+    document.getElementById('closeFilters').addEventListener('click',closeFilters);
     function applyProductFilters(){const q=String(shopSearch.value||'').trim().toLowerCase(),category=filterCategory.value,colour=filterColour.value,min=filterMin.value===''?0:Number(filterMin.value),max=filterMax.value===''?Infinity:Number(filterMax.value);let list=products.filter(p=>{const text=(p.name+' '+p.category+' '+(p.description||'')).toLowerCase(),colours=(p.variants&&p.variants.colours)||[];return(!q||text.includes(q))&&(!category||p.category===category)&&(!colour||colours.some(c=>c.toLowerCase()===colour.toLowerCase()))&&Number(p.price)>=min&&Number(p.price)<=max});if(filterSort.value==='price-low')list.sort((a,b)=>Number(a.price)-Number(b.price));else if(filterSort.value==='price-high')list.sort((a,b)=>Number(b.price)-Number(a.price));else if(filterSort.value==='name')list.sort((a,b)=>a.name.localeCompare(b.name));document.getElementById('filterCount').textContent='Showing '+list.length+' of '+products.length+' products';updateFilterButton();drawProducts(list);}
     const runProductSearch=value=>{shopSearch.value=value||'';applyProductFilters()};shopSearch.addEventListener('input',applyProductFilters);navSearch.addEventListener('input',e=>runProductSearch(e.target.value));document.getElementById('navSearchForm').addEventListener('submit',e=>{e.preventDefault();runProductSearch(navSearch.value);document.getElementById('shop').scrollIntoView({behavior:'smooth'});});
-    [filterCategory,filterColour,filterMin,filterMax,filterSort].forEach(el=>el.addEventListener('input',applyProductFilters));document.getElementById('clearFilters').addEventListener('click',()=>{shopSearch.value='';navSearch.value='';filterCategory.value='';filterColour.value='';filterMin.value='';filterMax.value='';filterSort.value='featured';wishlistMode=false;applyProductFilters();filterPanel.classList.remove('open');filterToggle.setAttribute('aria-expanded','false')});
+    [filterCategory,filterColour,filterMin,filterMax,filterSort].forEach(el=>el.addEventListener('input',applyProductFilters));document.getElementById('clearFilters').addEventListener('click',()=>{shopSearch.value='';navSearch.value='';filterCategory.value='';filterColour.value='';filterMin.value='';filterMax.value='';filterSort.value='featured';wishlistMode=false;applyProductFilters()});
     document.querySelectorAll('[data-category]').forEach(a=>a.addEventListener('click',()=>{const c=a.dataset.category;shopSearch.value='';filterCategory.value='';filterColour.value='';const match=[...filterCategory.options].find(o=>o.value.toLowerCase().includes(c.toLowerCase()));if(match)filterCategory.value=match.value;else shopSearch.value=c;applyProductFilters()}));
+    async function loadProductCatalogue(){
+      const catalogueUrls=['/products.json?v=20261107','products.json?v=20261107'];
+      let lastError=null;
+      for(const url of catalogueUrls){
+        try{
+          const response=await fetch(url,{cache:'no-store',headers:{'Accept':'application/json'}});
+          if(!response.ok)throw new Error('Catalogue request returned '+response.status);
+          const data=await response.json();
+          if(!Array.isArray(data))throw new Error('Catalogue response is not a product list');
+          const activeProducts=data.filter(p=>p&&p.active!==false&&p.id&&p.name);
+          if(data.length>0&&!activeProducts.length)throw new Error('Catalogue loaded but contained no valid active products');
+          products=activeProducts;
+          productsLoaded=true;
+          populateProductFilters();
+          const initialQuery=new URLSearchParams(location.search).get('search')||'';
+          if(initialQuery){navSearch.value=initialQuery;runProductSearch(initialQuery)}else applyProductFilters();
+          showDailyDeal();
+          return;
+        }catch(error){lastError=error;console.warn('SERA catalogue attempt failed:',url,error)}
+      }
+      console.error('SERA product catalogue failed to load:',lastError);
+      const root=document.getElementById('products');
+      root.innerHTML='<div class="empty"><h3>We couldn’t load the products.</h3><p>Please check your connection and try again. Your shopping catalogue is still available.</p><button type="button" class="primary" id="retryProducts">Try again</button></div>';
+      document.getElementById('retryProducts').addEventListener('click',loadProductCatalogue);
+    }
+    loadProductCatalogue();
     document.getElementById('checkout').addEventListener('click',()=>{if(!cart.length){alert('Your shopping bag is empty.');return}localStorage.setItem('sera_checkout_cart',JSON.stringify(cart));window.location.href='checkout.html';});
     renderCart();
 
