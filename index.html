@@ -267,7 +267,7 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
     .reward-pop{position:fixed;inset:0;z-index:95;background:rgba(28,17,35,.68);display:none;align-items:center;justify-content:center;padding:18px}.reward-pop.open{display:flex}
     .reward-card{position:relative;width:min(100%,470px);border:1px solid #eadcf5;border-radius:22px;padding:30px 28px 26px;text-align:center;background:linear-gradient(145deg,#fff8fc,#f1eaff 58%,#fff3df);box-shadow:0 24px 80px rgba(20,8,30,.3);animation:rewardPopIn .22s ease-out}
     .reward-card h2{font:500 clamp(29px,6vw,38px) Georgia,serif;color:var(--berry);margin:9px 0 12px}.reward-card .reward-intro{font-size:13px;line-height:1.75;color:#655a61;margin:0 auto 20px;max-width:380px}
-    .reward-scratch{min-height:205px;border-radius:17px;padding:24px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#6d28d9,#a855f7 55%,#ff4f9a);color:#fff;box-shadow:0 12px 28px rgba(109,40,217,.18)}
+    .reward-points-total{margin:0 auto 16px;padding:11px 16px;border:1px solid #eadcf5;border-radius:999px;background:#fff;color:#4c1d95;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:7px}.reward-points-total strong{font-size:18px;color:#6d28d9}.reward-scratch{min-height:205px;border-radius:17px;padding:24px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#6d28d9,#a855f7 55%,#ff4f9a);color:#fff;box-shadow:0 12px 28px rgba(109,40,217,.18)}
     .reward-scratch-label{font-size:10px;letter-spacing:.18em;font-weight:800}.reward-scratch strong{font:30px Georgia,serif;margin:15px 0}.reward-scratch .primary{background:#fff;color:var(--berry);box-shadow:none}.reward-scratch small{font-size:11px;opacity:.94;margin-top:13px;line-height:1.55;max-width:310px}
     .reward-close{position:absolute;right:13px;top:12px;width:36px;height:36px;border:0;border-radius:50%;background:#fff;color:#4a3154;font-size:25px;cursor:pointer}
     @keyframes rewardPopIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
@@ -338,6 +338,7 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
       <div class="eyebrow">A little reward for showing up</div>
       <h2 id="playRewardsTitle">Play & earn with SERA</h2>
       <p class="reward-intro">Scratch your card once a day to earn a bonus point. You can also earn points when you shop. Once your payment is verified, your shopping points are added to your rewards. Keep collecting points and enjoy discounts on your next SERA orders.</p>
+      <div class="reward-points-total" id="rewardPointsTotal" aria-live="polite">Your total points: <strong id="rewardPointsValue">0</strong></div>
       <div class="reward-scratch" id="scratchCard">
         <span class="reward-scratch-label">TODAY'S LITTLE SURPRISE</span>
         <strong id="scratchPrize">Your surprise is waiting</strong>
@@ -491,22 +492,7 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
       root.innerHTML='<div class="empty"><h3>We couldn’t load the products.</h3><p>Please check your connection and try again. Your shopping catalogue is still available.</p><button type="button" class="primary" id="retryProducts">Try again</button></div>';
       document.getElementById('retryProducts').addEventListener('click',loadProductCatalogue);
     }
-    (function initDailyScratch(){
-      const pointsKey='sera_game_bonus_points',playedKey='sera_game_last_played';
-      const points=()=>Math.max(0,Number(localStorage.getItem(pointsKey)||0));
-      const today=()=>new Date().toLocaleDateString('en-CA');
-      const popup=document.getElementById('rewardPopup'),openButton=document.getElementById('openRewardPopup'),closeButton=document.getElementById('rewardClose');
-      const button=document.getElementById('scratchButton'),prize=document.getElementById('scratchPrize'),message=document.getElementById('scratchMessage');
-      function open(){popup.classList.add('open');popup.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';closeButton.focus()}
-      function close(){popup.classList.remove('open');popup.setAttribute('aria-hidden','true');document.body.style.overflow=''}
-      function render(){const played=localStorage.getItem(playedKey)===today();button.disabled=played;button.textContent=played?'Come back tomorrow':'Scratch & earn';if(played){prize.textContent='You earned 1 point today';message.textContent='Your next daily surprise will be ready tomorrow. Keep shopping and earning points towards discounts on your next SERA orders.'}}
-      openButton.addEventListener('click',open);
-      closeButton.addEventListener('click',close);
-      popup.addEventListener('click',event=>{if(event.target===popup)close()});
-      document.addEventListener('keydown',event=>{if(event.key==='Escape'&&popup.classList.contains('open'))close()});
-      button.addEventListener('click',()=>{if(localStorage.getItem(playedKey)===today())return;localStorage.setItem(pointsKey,String(points()+1));localStorage.setItem(playedKey,today());prize.textContent='You earned 1 bonus point!';message.textContent='Nice one! Keep shopping and collecting points for discounts on your next SERA orders.';render();prize.textContent='You earned 1 bonus point!'});
-      render();
-    })();
+
     loadProductCatalogue();
     const skinServices={
       'sera-service-skin-reset':{name:'The 8-Week Skin Reset',price:100000},
@@ -533,6 +519,22 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
         requestAnimationFrame(()=>document.getElementById('shop')?.scrollIntoView({behavior:'instant',block:'start'}));
       }
     });
+  </script>
+  <script type="module">
+    import {createClient} from 'https://esm.sh/@supabase/supabase-js@2';
+    import {SUPABASE_URL,SUPABASE_ANON_KEY} from './supabase-config.js';
+    const popup=document.getElementById("rewardPopup"),openButton=document.getElementById("openRewardPopup"),closeButton=document.getElementById("rewardClose");
+    const button=document.getElementById("scratchButton"),prize=document.getElementById("scratchPrize"),message=document.getElementById("scratchMessage"),totalValue=document.getElementById("rewardPointsValue");
+    const guestKey="sera_guest_rewards_id"; let guestId=null,supabase=null,ready=false;
+    function getGuestId(){let id=localStorage.getItem(guestKey);if(!id){if(!crypto.randomUUID)throw new Error("Secure guest IDs are not supported by this browser.");id=crypto.randomUUID();localStorage.setItem(guestKey,id)}return id}
+    function setTotal(value){totalValue.textContent=String(Math.max(0,Number(value)||0))}
+    function setUnavailable(){button.disabled=true;button.textContent="Temporarily unavailable";message.textContent="We could not connect to SERA Rewards. Please refresh and try again."}
+    function open(){popup.classList.add("open");popup.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";closeButton.focus()}
+    function close(){popup.classList.remove("open");popup.setAttribute("aria-hidden","true");document.body.style.overflow=""}
+    openButton.addEventListener("click",open);closeButton.addEventListener("click",close);popup.addEventListener("click",event=>{if(event.target===popup)close()});document.addEventListener("keydown",event=>{if(event.key==="Escape"&&popup.classList.contains("open"))close()});
+    async function refreshGuestRewards(){const {data,error}=await supabase.rpc("sera_guest_reward_status",{p_guest_id:guestId});if(error)throw error;const result=Array.isArray(data)?data[0]:data;if(!result)throw new Error("Rewards status was not returned.");setTotal(result.total_points);const played=!!result.played_today;button.disabled=played;button.textContent=played?"Come back tomorrow":"Scratch & earn";if(played){prize.textContent="You have played today";message.textContent="You have "+Number(result.total_points||0)+" points in total. Your next daily surprise will be ready tomorrow."}ready=true}
+    button.addEventListener("click",async()=>{if(!ready||button.disabled)return;button.disabled=true;button.textContent="Revealing…";try{const {data,error}=await supabase.rpc("sera_play_daily_reward",{p_guest_id:guestId});if(error)throw error;const result=Array.isArray(data)?data[0]:data;if(!result)throw new Error("Your reward could not be confirmed.");setTotal(result.total_points);if(Number(result.points_awarded)>0){prize.textContent="You earned 1 bonus point!";message.textContent="You now have "+Number(result.total_points)+" points in total. Keep collecting points for discounts on your next SERA orders."}else{prize.textContent="You have already played today";message.textContent="Your current total is "+Number(result.total_points)+" points. Come back tomorrow for another play."}button.textContent="Come back tomorrow"}catch(error){console.error("SERA guest rewards error:",error);button.disabled=false;button.textContent="Try again";message.textContent="We could not save your point just now. Please try again."}});
+    try{guestId=getGuestId();supabase=createClient(SUPABASE_URL,SUPABASE_ANON_KEY);await refreshGuestRewards()}catch(error){console.error("SERA guest rewards could not initialise:",error);setUnavailable()}
   </script>
 </body>
 </html>
