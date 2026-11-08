@@ -335,7 +335,7 @@
     "name": "Face Oil Absorber",
     "category": "Beauty",
     "description": "A compact tool for absorbing excess facial oil.",
-    "price": 3500,
+    "price": 3520,
     "image": "images/Sa588cf04ff8a4e82be57234479fa0530t.jpg_220x220q75.jpg_.avif",
     "active": true,
     "stockStatus": "in_stock",
@@ -360,7 +360,7 @@
     "name": "Konjac Face Sponge",
     "category": "Beauty",
     "description": "A konjac facial cleansing sponge for gentle cleansing.",
-    "price": 4000,
+    "price": 4520,
     "image": "images/S99d1e2b1174942a5b9d34a70d7b71945G.jpg_220x220q75.jpg_.avif",
     "active": true,
     "stockStatus": "in_stock"
@@ -396,7 +396,7 @@
     "name": "Silicone Bowl & Mixer",
     "category": "Beauty",
     "description": "A silicone mixing bowl and spatula set for preparing DIY face masks.",
-    "price": 5000,
+    "price": 5520,
     "image": "images/S76218eefc5624a1a99fecc0a35056e0cD.jpg_220x220q75.jpg_.avif",
     "active": true,
     "stockStatus": "in_stock"
@@ -427,7 +427,7 @@
     "name": "Rose Quartz Gua Sha Massager",
     "category": "Beauty",
     "description": "A rose quartz gua sha tool for facial massage.",
-    "price": 6200,
+    "price": 6285,
     "image": "images/S1a642d3efbda4f9c9a0bcf5d4e67cc02E.jpg_220x220q75.jpg_.avif",
     "active": true,
     "stockStatus": "in_stock"
@@ -437,7 +437,7 @@
     "name": "Sonic Face Brush",
     "category": "Beauty",
     "description": "An electronic sonic facial cleansing brush. Follow the manufacturer's usage and cleaning instructions.",
-    "price": 15000,
+    "price": 15520,
     "image": "",
     "active": true,
     "stockStatus": "in_stock"
