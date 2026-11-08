@@ -263,13 +263,15 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
 @media(max-width:430px){.nav-search .search-suggestions{right:0;min-width:0}.shop-search-shell{width:100%;flex-basis:100%}}
 
 
-    .play-rewards{max-width:1150px;margin:28px auto 20px;padding:26px 30px;display:grid;grid-template-columns:1.2fr .8fr;gap:25px;align-items:center;border:1px solid #eadcf5;border-radius:18px;background:linear-gradient(115deg,#f1eaff,#fff0f7 58%,#fff4df)}
-    .play-rewards h2{font:500 clamp(28px,4vw,38px) Georgia,serif;color:var(--berry);margin:8px 0}
-    .play-rewards p{font-size:13px;line-height:1.7;color:var(--muted);max-width:520px}
-    .play-reward-balance{display:flex;align-items:center;gap:12px;margin-top:12px}.play-reward-balance strong{font:700 28px Georgia,serif;color:var(--berry)}.play-reward-balance span,.play-reward-value{font-size:12px;color:#655a61}
-    .scratch-card{min-height:190px;border-radius:16px;padding:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#6d28d9,#a855f7 55%,#ff4f9a);color:#fff;box-shadow:0 12px 28px rgba(109,40,217,.18)}
-    .scratch-card-label{font-size:10px;letter-spacing:.18em;font-weight:800}.scratch-card strong{font:30px Georgia,serif;margin:13px 0}.scratch-card .primary{background:#fff;color:var(--berry);box-shadow:none}.scratch-card small{font-size:10px;opacity:.9;margin-top:12px;line-height:1.5}
-    @media(max-width:700px){.play-rewards{margin:18px;padding:22px 18px;grid-template-columns:1fr;gap:14px}.scratch-card{min-height:165px}}
+    .reward-launcher{position:fixed;right:20px;bottom:22px;z-index:70;border:0;border-radius:999px;padding:13px 19px;background:linear-gradient(120deg,#6d28d9,#a855f7);color:#fff;font-weight:800;box-shadow:0 8px 26px rgba(74,28,111,.28);cursor:pointer}
+    .reward-pop{position:fixed;inset:0;z-index:95;background:rgba(28,17,35,.68);display:none;align-items:center;justify-content:center;padding:18px}.reward-pop.open{display:flex}
+    .reward-card{position:relative;width:min(100%,470px);border:1px solid #eadcf5;border-radius:22px;padding:30px 28px 26px;text-align:center;background:linear-gradient(145deg,#fff8fc,#f1eaff 58%,#fff3df);box-shadow:0 24px 80px rgba(20,8,30,.3);animation:rewardPopIn .22s ease-out}
+    .reward-card h2{font:500 clamp(29px,6vw,38px) Georgia,serif;color:var(--berry);margin:9px 0 12px}.reward-card .reward-intro{font-size:13px;line-height:1.75;color:#655a61;margin:0 auto 20px;max-width:380px}
+    .reward-scratch{min-height:205px;border-radius:17px;padding:24px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:linear-gradient(145deg,#6d28d9,#a855f7 55%,#ff4f9a);color:#fff;box-shadow:0 12px 28px rgba(109,40,217,.18)}
+    .reward-scratch-label{font-size:10px;letter-spacing:.18em;font-weight:800}.reward-scratch strong{font:30px Georgia,serif;margin:15px 0}.reward-scratch .primary{background:#fff;color:var(--berry);box-shadow:none}.reward-scratch small{font-size:11px;opacity:.94;margin-top:13px;line-height:1.55;max-width:310px}
+    .reward-close{position:absolute;right:13px;top:12px;width:36px;height:36px;border:0;border-radius:50%;background:#fff;color:#4a3154;font-size:25px;cursor:pointer}
+    @keyframes rewardPopIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+    @media(max-width:520px){.reward-launcher{right:13px;bottom:14px;padding:12px 16px}.reward-card{padding:28px 18px 20px}.reward-scratch{min-height:180px}}
 </style>
 </head>
 <body>
@@ -292,10 +294,6 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
       <span><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#ff7a27" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.7 7.4L3 20l1.1-5.1A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8 9.5c.8 2 2.2 3.4 4.5 4.5"/></svg> Helpful customer support</span>
       <span><svg aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#35b878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg> More finds to explore</span>
     </div>
-    <section class="play-rewards" id="play-rewards" aria-labelledby="playRewardsTitle">
-      <div class="play-rewards-copy"><div class="eyebrow">A little reward for showing up</div><h2 id="playRewardsTitle">Play & earn with SERA</h2><p>Try the daily scratch card to collect a bonus point. Shopping rewards are added after your payment is verified.</p><div class="play-reward-balance"><strong id="gamePoints">0</strong><span>game points collected on this device</span></div><p class="play-reward-value" id="gameRewardValue">6 points = ₦100 off your next order</p></div>
-      <div class="scratch-card-wrap"><div class="scratch-card" id="scratchCard"><span class="scratch-card-label">TODAY'S LITTLE SURPRISE</span><strong id="scratchPrize">Scratch to reveal</strong><button type="button" id="scratchButton" class="primary">Scratch & earn</button><small id="scratchMessage">One play per day. One bonus point when you play.</small></div></div>
-    </section>
     <section id="categories"><div class="section-head"><div><div class="eyebrow">Explore your kind of find</div><h2>Shop by category</h2></div><p>A growing collection across the things you use, wear, enjoy and need.</p></div>
       <div class="categories">
         <a class="category" href="#shop" data-category="Beauty" style="background-image:url(https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=85)"><small>01 / Self-care</small><b>Beauty & care ↗</b></a>
@@ -333,6 +331,21 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
   <footer id="contact"><div class="footer-inner"><div><div class="footer-brand"><img src="sera-logo.svg" alt="SERA Beauty Essentials" style="width:175px;height:auto;filter:brightness(0) invert(1)"></div><p>Everyday finds, thoughtfully picked.<br>Serving customers across Nigeria.</p><p><a href="https://open.er-api.com/" target="_blank" rel="noopener">Exchange-rate estimates</a> are indicative only.</p></div><div><strong style="font-size:13px">Explore</strong><div class="footer-links" style="margin-top:14px"><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#about">About Sera</a><a href="refund-policy.html">Refund policy</a></div><p><strong>Contact us</strong><br><a href="https://wa.me/2349067756473" target="_blank" rel="noopener">Chat with us on WhatsApp</a></p></div><div><strong style="font-size:13px">Follow us</strong><div class="footer-links" style="margin-top:14px"><a href="https://www.instagram.com/seraessentialsbyeni/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@serabeautyessentials" target="_blank" rel="noopener">TikTok</a><a href="https://youtube.com/@serabeautyessentials" target="_blank" rel="noopener">YouTube</a></div></div></div></footer>
   <div class="cart-panel" id="cartPanel" aria-hidden="true"><div class="shade" id="shade"></div><aside class="cart-box"><div class="cart-top"><h2>Your shopping bag</h2><button class="close" id="closeCart" aria-label="Close cart">×</button></div><div class="cart-lines" id="cartLines"></div><div class="cart-total"><span>Subtotal</span><span id="cartTotal">₦0</span></div><div class="cart-estimate" id="cartEstimate"></div><p class="cart-note">Delivery and final availability are confirmed before payment. Your order is not placed until Sera confirms it with you.</p><button class="primary" id="checkout">Continue to order</button></aside></div>
   <div class="modal" id="productModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" id="modalClose" aria-label="Close">×</button><div class="modal-photo" id="modalPhoto"></div><div class="modal-copy" id="modalCopy"></div></div></div>
+  <button type="button" class="reward-launcher" id="openRewardPopup">Play & earn</button>
+  <div class="reward-pop" id="rewardPopup" aria-hidden="true">
+    <div class="reward-card" role="dialog" aria-modal="true" aria-labelledby="playRewardsTitle">
+      <button type="button" class="reward-close" id="rewardClose" aria-label="Close">×</button>
+      <div class="eyebrow">A little reward for showing up</div>
+      <h2 id="playRewardsTitle">Play & earn with SERA</h2>
+      <p class="reward-intro">Scratch your card once a day to earn a bonus point. You can also earn points when you shop. Once your payment is verified, your shopping points are added to your rewards. Keep collecting points and enjoy discounts on your next SERA orders.</p>
+      <div class="reward-scratch" id="scratchCard">
+        <span class="reward-scratch-label">TODAY'S LITTLE SURPRISE</span>
+        <strong id="scratchPrize">Your surprise is waiting</strong>
+        <button type="button" id="scratchButton" class="primary">Scratch & earn</button>
+        <small id="scratchMessage">One play a day. Every point brings you closer to your next shopping discount.</small>
+      </div>
+    </div>
+  </div>
   <div class="deal-pop" id="dealPopup"><div class="deal-card"><button class="modal-close" id="dealClose" aria-label="Close">×</button><div class="eyebrow">A little something for you</div><h2>Today's SERA deal</h2><div id="dealContent"></div></div></div>
   <script>
     const money = n => new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN',maximumFractionDigits:0}).format(n);
@@ -482,9 +495,16 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
       const pointsKey='sera_game_bonus_points',playedKey='sera_game_last_played';
       const points=()=>Math.max(0,Number(localStorage.getItem(pointsKey)||0));
       const today=()=>new Date().toLocaleDateString('en-CA');
-      const balance=document.getElementById('gamePoints'),value=document.getElementById('gameRewardValue'),button=document.getElementById('scratchButton'),prize=document.getElementById('scratchPrize'),message=document.getElementById('scratchMessage');
-      function render(){const total=points(),played=localStorage.getItem(playedKey)===today();balance.textContent=total;value.textContent=Math.floor(total/6)+' × ₦100 available from game points (6 points = ₦100)';button.disabled=played;button.textContent=played?'Come back tomorrow':'Scratch & earn';if(played){prize.textContent='You earned 1 point today';message.textContent='Your next daily scratch card will be ready tomorrow.'}}
-      button.addEventListener('click',()=>{if(localStorage.getItem(playedKey)===today())return;localStorage.setItem(pointsKey,String(points()+1));localStorage.setItem(playedKey,today());prize.textContent='You earned 1 bonus point!';message.textContent='Take a screenshot of your points and order reference when requesting a discount. SERA will verify rewards manually.';render();prize.textContent='You earned 1 bonus point!'});
+      const popup=document.getElementById('rewardPopup'),openButton=document.getElementById('openRewardPopup'),closeButton=document.getElementById('rewardClose');
+      const button=document.getElementById('scratchButton'),prize=document.getElementById('scratchPrize'),message=document.getElementById('scratchMessage');
+      function open(){popup.classList.add('open');popup.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';closeButton.focus()}
+      function close(){popup.classList.remove('open');popup.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+      function render(){const played=localStorage.getItem(playedKey)===today();button.disabled=played;button.textContent=played?'Come back tomorrow':'Scratch & earn';if(played){prize.textContent='You earned 1 point today';message.textContent='Your next daily surprise will be ready tomorrow. Keep shopping and earning points towards discounts on your next SERA orders.'}}
+      openButton.addEventListener('click',open);
+      closeButton.addEventListener('click',close);
+      popup.addEventListener('click',event=>{if(event.target===popup)close()});
+      document.addEventListener('keydown',event=>{if(event.key==='Escape'&&popup.classList.contains('open'))close()});
+      button.addEventListener('click',()=>{if(localStorage.getItem(playedKey)===today())return;localStorage.setItem(pointsKey,String(points()+1));localStorage.setItem(playedKey,today());prize.textContent='You earned 1 bonus point!';message.textContent='Nice one! Keep shopping and collecting points for discounts on your next SERA orders.';render();prize.textContent='You earned 1 bonus point!'});
       render();
     })();
     loadProductCatalogue();
