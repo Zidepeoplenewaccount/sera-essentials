@@ -304,7 +304,7 @@
     "category": "Beauty",
     "description": "A facial towel designed for hot or cold compress use.",
     "price": 3960,
-    "image": "",
+    "image": "images/c3c50c24-bb40-47fb-89ac-fd79c15fea55.png",
     "active": true,
     "stockStatus": "in_stock"
   },
@@ -314,7 +314,7 @@
     "category": "Beauty",
     "description": "A reusable silicone face mask accessory.",
     "price": 2950,
-    "image": "",
+    "image": "images/Silicone Face Masks Display.png",
     "active": true,
     "stockStatus": "in_stock",
     "variants": {
@@ -557,7 +557,7 @@
     "category": "Wellness",
     "description": "A pack of 10 Sera Spearmint Tea.",
     "price": 14960,
-    "image": "",
+    "image": "images/IMG_5894.JPG",
     "active": true,
     "stockStatus": "in_stock"
   },
