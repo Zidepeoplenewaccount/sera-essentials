@@ -103,8 +103,7 @@ const stateSelect=document.getElementById('state');
 states.forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;stateSelect.appendChild(o)});
 const cityInput=document.getElementById('city');
 let deliveryFee=0;
-let appliedDiscount={code:null,amount:0,points:0};
-function updateGrandTotal(){const payable=Math.max(0,subtotal+deliveryFee-appliedDiscount.amount);document.getElementById('grandTotal').textContent=money(payable);updateFxEstimate();const old=document.getElementById('discountSummary');if(old)old.remove();if(appliedDiscount.amount>0){const row=document.createElement('div');row.id='discountSummary';row.style.cssText='display:flex;justify-content:space-between;color:#168653;font-weight:700;margin:8px 0';row.innerHTML='<span>SERA reward discount ('+escapeHtml(appliedDiscount.code)+')</span><strong>−'+money(appliedDiscount.amount)+'</strong>';document.getElementById('grandTotal').parentElement.insertBefore(row,document.getElementById('grandTotal'))}}
+
 let appliedDiscount={code:null,amount:0,points:0};
 function renderDiscountSummary(){
  const old=document.getElementById('discountSummary');if(old)old.remove();
@@ -244,22 +243,6 @@ updateDelivery();
 loadFxRates();
 const pd=PAYMENT_DETAILS;
 if(pd.bankName!=='ADD BANK NAME'&&pd.accountNumber!=='ADD ACCOUNT NUMBER')document.getElementById('bankDetails').innerHTML=`Bank: <strong>${pd.bankName}</strong><br>Account name: <strong>${pd.accountName}</strong><br>Account number: <strong>${pd.accountNumber}</strong>`;
-const supabase=createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-const discountInput=document.getElementById('discountCode'),discountButton=document.getElementById('applyDiscountCode'),discountMessage=document.getElementById('discountCodeMessage');
-discountButton.addEventListener('click',async()=>{
- const code=discountInput.value.trim().toUpperCase(),phone=document.getElementById('phone').value.trim();
- discountMessage.classList.remove('success-text');appliedDiscount={code:null,amount:0,points:0};updateGrandTotal();
- if(!code){discountMessage.textContent='Enter your SERA discount code first.';return}
- if(!phone){discountMessage.textContent='Enter the WhatsApp phone number linked to your reward code first.';return}
- discountButton.disabled=true;discountButton.textContent='Checking…';
- try{const {data,error}=await supabase.rpc('sera_validate_discount_code',{p_code:code,p_phone:phone});
-  if(error)throw error;const result=Array.isArray(data)?data[0]:data;
-  if(!result||!Number(result.discount_amount)){throw new Error('This code is invalid, already used, expired or does not match this phone number.')}
-  appliedDiscount={code,amount:Number(result.discount_amount),points:Number(result.points)};
-  discountMessage.textContent='Code applied: '+result.points+' points will give you '+money(result.discount_amount)+' off this order.';discountMessage.classList.add('success-text');updateGrandTotal();
- }catch(err){discountMessage.textContent=err.message||'Could not validate this code. Please contact SERA.'}
- finally{discountButton.disabled=false;discountButton.textContent='Apply code'}
-});
 const supabase=createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
 const discountInput=document.getElementById('discountCode'),discountButton=document.getElementById('applyDiscountCode'),discountMessage=document.getElementById('discountCodeMessage');
 discountButton.addEventListener('click',async()=>{
