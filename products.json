@@ -303,14 +303,10 @@
     "name": "Hot & Cold Compress Face Towel",
     "category": "Beauty",
     "description": "A facial towel designed for hot or cold compress use.",
-    "price": 3960,
+    "price": 5800,
     "image": "images/c3c50c24-bb40-47fb-89ac-fd79c15fea55.png",
     "active": true,
     "stockStatus": "in_stock",
-    "priceRange": {
-      "min": 3960,
-      "max": 5800
-    },
     "variants": {
       "colours": [
         "White"
