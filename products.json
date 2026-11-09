@@ -613,5 +613,185 @@
         "12 pairs — L"
       ]
     }
+  },
+  {
+    "id": "sera-038",
+    "name": "Flexible Foldable Headband",
+    "category": "Beauty",
+    "description": "A flexible, foldable headband that helps keep hair away from your face during skincare, makeup application and everyday routines.",
+    "price": 4500,
+    "image": "Flexible Foldable Headband.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-039",
+    "name": "Under-eye Jade Roller",
+    "category": "Beauty",
+    "description": "A compact jade roller designed for gentle massage around the under-eye area. Use with light pressure and your preferred eye serum or moisturiser.",
+    "price": 6500,
+    "image": "Under-eye Jade Roller.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-040",
+    "name": "Gold Jade Roller",
+    "category": "Beauty",
+    "description": "A gold-tone facial massage roller for a relaxing skincare routine. Glide gently over clean skin.",
+    "price": 9500,
+    "image": "Gold Jade Roller.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-041",
+    "name": "Gel Eye Mask",
+    "category": "Beauty",
+    "description": "A reusable gel eye mask for a soothing self-care routine. Follow the product care instructions and avoid applying extreme temperatures directly to skin.",
+    "price": 5500,
+    "image": "Gel Eye Mask.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-042",
+    "name": "Foot Scraper",
+    "category": "Beauty",
+    "description": "A handy foot-care tool for smoothing rough areas on the feet. Use gently on damp skin and do not use on broken or irritated skin.",
+    "price": 4500,
+    "image": "Foot Scraper.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-043",
+    "name": "Pump Bottle",
+    "category": "Beauty",
+    "description": "A refillable pump bottle for convenient dispensing of liquid skincare, lotion or other personal-care products.",
+    "price": 5500,
+    "image": "Pump Bottle.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-044",
+    "name": "3-in-1 Face Towel",
+    "category": "Beauty",
+    "description": "A practical three-in-one face towel for your daily cleansing and skincare routine.",
+    "price": 6500,
+    "image": "3 in 1 Face Towel.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-045",
+    "name": "Exfoliating Bath Pad",
+    "category": "Beauty",
+    "description": "An exfoliating bath pad designed to help cleanse and gently exfoliate the body during bathing. Adjust pressure to suit your skin.",
+    "price": 4500,
+    "image": "Exfoliating Bath Pad.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-046",
+    "name": "Cream Pump Jar",
+    "category": "Beauty",
+    "description": "A refillable cream container with a pump-style dispenser for neat, convenient access to your skincare products.",
+    "price": 6500,
+    "image": "Cream Pump Jar.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-047",
+    "name": "Body Brush",
+    "category": "Beauty",
+    "description": "A body brush for your bathing and body-care routine. Use with your preferred body wash and clean after use.",
+    "price": 7500,
+    "image": "Body Brush.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-048",
+    "name": "Electric Foot Callus Remover",
+    "category": "Beauty",
+    "description": "An electric foot-care device designed to help buff away hard, rough skin on the feet. Use gently and follow the manufacturer's instructions.",
+    "price": 18500,
+    "image": "Electric Foot Callus Remover.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-049",
+    "name": "Flat Make-up Brush Cleaner",
+    "category": "Beauty",
+    "description": "A flat cleaning tool for washing makeup brushes and helping remove built-up product residue. Rinse and dry brushes thoroughly after cleaning.",
+    "price": 4500,
+    "image": "Flat Make-up Brush Cleaner.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-050",
+    "name": "Gel Eye Mask – Style A",
+    "category": "Beauty",
+    "description": "A reusable gel eye mask for a cooling or soothing self-care routine. Use only as directed and protect skin from direct extreme cold.",
+    "price": 6000,
+    "image": "Gel Eye Mask A.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-051",
+    "name": "Face Wipes Storage Box",
+    "category": "Beauty",
+    "description": "A storage box designed to keep facial wipes organised and easy to reach on your vanity or bathroom counter.",
+    "price": 7500,
+    "image": "Face Wipes Storage BoxJPG.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-052",
+    "name": "Facial Ice Roller",
+    "category": "Beauty",
+    "description": "A facial ice roller for a refreshing massage as part of your skincare routine. Use gently and keep the roller clean between uses.",
+    "price": 8500,
+    "image": "Facial Ice Roller.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-053",
+    "name": "Facial Cleansing Pump with Brush",
+    "category": "Beauty",
+    "description": "A facial cleansing pump with an integrated brush applicator to help dispense cleanser and work it into a lather. Clean the brush regularly.",
+    "price": 8500,
+    "image": "Facial Wash Pump with Brush.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-054",
+    "name": "Facial Cleansing Pump with Brush – Style B",
+    "category": "Beauty",
+    "description": "An alternative style of facial cleansing pump with an integrated brush applicator. Dispenses cleanser for a convenient face-washing routine.",
+    "price": 9000,
+    "image": "Facial Wash Pump with Brush A.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-055",
+    "name": "Gel Eye Mask – Style B",
+    "category": "Beauty",
+    "description": "A reusable gel eye mask for a soothing eye-care routine. Follow the care instructions and avoid direct contact with extreme temperatures.",
+    "price": 6500,
+    "image": "Gel Eye Mask B.JPG",
+    "active": true,
+    "stockStatus": "in_stock"
   }
 ]
