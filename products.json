@@ -797,5 +797,20 @@
     "image": "Gel Eye Mask B.JPG",
     "active": true,
     "stockStatus": "in_stock"
+  },
+  {
+    "id": "sera-056",
+    "name": "Ultrasonic Skin Scrubber",
+    "category": "Beauty",
+    "description": "A facial skincare device for deep cleansing and gentle exfoliation. Features 5 modes with light. White finish. Follow the manufacturer's instructions and use on clean, appropriately prepared skin.",
+    "price": 35000,
+    "image": "images/1f91f8f1-5a88-42e4-9132-2f49c8427a17.png",
+    "active": true,
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "White"
+      ]
+    }
   }
 ]
