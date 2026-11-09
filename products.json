@@ -812,5 +812,20 @@
         "White"
       ]
     }
+  },
+  {
+    "id": "sera-057",
+    "name": "Rechargeable Facial LED Mask – 7 Colours",
+    "category": "Beauty",
+    "description": "A rechargeable LED photon facial mask with 7 light colour settings for an at-home skincare routine. White finish. Follow the manufacturer's instructions and recommended session times.",
+    "price": 39816,
+    "image": "images/S3f4eee5d52cc42fc9f65c94ef9ef766fT.jpg_220x220q75.jpg_.avif",
+    "active": true,
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "White"
+      ]
+    }
   }
 ]
