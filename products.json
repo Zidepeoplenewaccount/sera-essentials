@@ -623,7 +623,7 @@
     "name": "Flexible Foldable Headband",
     "category": "Beauty",
     "description": "A flexible, foldable headband that helps keep hair away from your face during skincare, makeup application and everyday routines.",
-    "price": 4500,
+    "price": 5540,
     "image": "Flexible Foldable Headband.JPG",
     "active": true,
     "stockStatus": "in_stock"
@@ -643,7 +643,7 @@
     "name": "Gold Jade Roller",
     "category": "Beauty",
     "description": "A gold-tone facial massage roller for a relaxing skincare routine. Glide gently over clean skin.",
-    "price": 9500,
+    "price": 30280,
     "image": "Gold Jade Roller.JPG",
     "active": true,
     "stockStatus": "in_stock"
@@ -653,7 +653,7 @@
     "name": "Gel Eye Mask",
     "category": "Beauty",
     "description": "A reusable gel eye mask for a soothing self-care routine. Follow the product care instructions and avoid applying extreme temperatures directly to skin.",
-    "price": 5500,
+    "price": 6575,
     "image": "Gel Eye Mask.JPG",
     "active": true,
     "stockStatus": "in_stock"
@@ -673,7 +673,7 @@
     "name": "Pump Bottle",
     "category": "Beauty",
     "description": "A refillable pump bottle for convenient dispensing of liquid skincare, lotion or other personal-care products.",
-    "price": 5500,
+    "price": 2850,
     "image": "Pump Bottle.JPG",
     "active": true,
     "stockStatus": "in_stock"
@@ -703,7 +703,7 @@
     "name": "Cream Pump Jar",
     "category": "Beauty",
     "description": "A refillable cream container with a pump-style dispenser for neat, convenient access to your skincare products.",
-    "price": 6500,
+    "price": 4510,
     "image": "Cream Pump Jar.JPG",
     "active": true,
     "stockStatus": "in_stock"
@@ -783,7 +783,7 @@
     "name": "Facial Cleansing Pump with Brush – Style B",
     "category": "Beauty",
     "description": "An alternative style of facial cleansing pump with an integrated brush applicator. Dispenses cleanser for a convenient face-washing routine.",
-    "price": 9000,
+    "price": 5570,
     "image": "Facial Wash Pump with Brush A.JPG",
     "active": true,
     "stockStatus": "in_stock"
