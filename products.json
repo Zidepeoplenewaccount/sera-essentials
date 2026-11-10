@@ -827,5 +827,32 @@
         "White"
       ]
     }
+  },
+  {
+    "id": "sera-058",
+    "name": "Hair Wash Brush",
+    "category": "Beauty",
+    "description": "A handy scalp and hair-washing brush designed to help work shampoo through the hair during wash day. Choose your preferred colour.",
+    "price": 3520,
+    "image": "images/IMG_5957_small.jpg",
+    "active": true,
+    "stockStatus": "in_stock",
+    "variants": {
+      "colours": [
+        "Purple",
+        "Pink",
+        "Chartreuse"
+      ]
+    }
+  },
+  {
+    "id": "sera-059",
+    "name": "Head Massager",
+    "category": "Beauty",
+    "description": "A handheld head massager for a relaxing scalp massage as part of your self-care routine.",
+    "price": 4790,
+    "image": "images/IMG_5958_small.jpg",
+    "active": true,
+    "stockStatus": "in_stock"
   }
 ]
