@@ -330,10 +330,23 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
 .modal-photo img[src*="Facial Wash Pump with Brush A"],
 .modal-photo img[src*="Gel Eye Mask B"]{transform:rotate(90deg)}
 
+
+/* Free gift promotion */
+.gift-pop{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(33,21,45,.72)}
+.gift-pop.open{display:flex}
+.gift-card{position:relative;width:min(440px,100%);padding:34px 30px 30px;text-align:center;border-radius:20px;background:linear-gradient(145deg,#fff7fb,#f1eaff 52%,#fff2df);box-shadow:0 24px 70px rgba(20,10,35,.3);border:1px solid #fff}
+.gift-card .gift-icon{font-size:42px;line-height:1;margin-bottom:12px}
+.gift-card .eyebrow{color:#e56a26}
+.gift-card h2{font:500 36px/1.08 Georgia,serif;color:#54248c;margin:13px 0}
+.gift-card p{font-size:14px;line-height:1.75;color:#716779;margin:0 auto 20px;max-width:340px}
+.gift-card .primary{display:inline-block;text-decoration:none}
+.gift-close{position:absolute;right:13px;top:9px;border:0;background:transparent;color:#54248c;font-size:28px;cursor:pointer}
+@media(max-width:480px){.gift-card{padding:30px 22px}.gift-card h2{font-size:32px}}
+
 </style>
 </head>
 <body>
-  <div class="announcement">GOOD FINDS. GOOD FEELING. WELCOME TO SERA ESSENTIALS.</div>
+  <div class="announcement">A FREE GIFT WITH EVERY ORDER · GOOD FINDS. GOOD FEELING. WELCOME TO SERA ESSENTIALS.</div>
   <header><nav class="nav">
     <a class="brand" href="#" aria-label="SERA Beauty Essentials homepage"><img src="sera-logo.svg" alt="SERA Beauty Essentials. Look Good. Live Better."></a>
     <form class="nav-search" id="navSearchForm" role="search"><div class="search-shell"><input id="navSearch" type="search" placeholder="Search products..." aria-label="Search products" autocomplete="off" aria-controls="navSearchSuggestions" aria-expanded="false"><div class="search-suggestions" id="navSearchSuggestions" role="listbox" aria-label="Search suggestions"></div></div><button type="submit" aria-label="Search">⌕</button></form><div class="navlinks"><a href="#categories">Categories</a><a href="#shop">Shop</a><a href="#skin-consultations">Skin consultations</a><a href="#about">Our story</a><a href="https://wa.me/2349067756473?text=Hello%20SERA%20ESSENTIALS%2C%20I%E2%80%99d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener">Contact us</a></div>
@@ -405,6 +418,8 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
       </div>
     </div>
   </div>
+
+  <div class="gift-pop" id="giftPopup" aria-hidden="true"><div class="gift-card" role="dialog" aria-modal="true" aria-labelledby="giftTitle"><button type="button" class="gift-close" id="giftClose" aria-label="Close">×</button><div class="gift-icon" aria-hidden="true">🎁</div><div class="eyebrow">A little something from SERA</div><h2 id="giftTitle">A free gift with every order!</h2><p>Every SERA order comes with a complimentary gift, because you deserve a little extra. Add your favourites to your bag and enjoy your surprise.</p><a class="primary" href="#shop" id="giftShop">Shop now</a></div></div>
   <div class="deal-pop" id="dealPopup"><div class="deal-card"><button class="modal-close" id="dealClose" aria-label="Close">×</button><div class="eyebrow">A little something for you</div><h2>Today's SERA deal</h2><div id="dealContent"></div></div></div>
   <script>
     const money = n => new Intl.NumberFormat('en-NG',{style:'currency',currency:'NGN',maximumFractionDigits:0}).format(n);
@@ -481,6 +496,14 @@ main{display:block!important;width:100%!important;max-width:none!important;margi
     }
     document.getElementById('showWishlist').onclick=()=>{wishlistMode=true;document.getElementById('shop').scrollIntoView({behavior:'smooth'});drawProducts(products)};const wishlistOnlyButton=document.getElementById('wishlistOnly');if(wishlistOnlyButton)wishlistOnlyButton.onclick=()=>{wishlistMode=true;applyProductFilters()};const allProductsButton=document.getElementById('allProducts');if(allProductsButton)allProductsButton.onclick=()=>{wishlistMode=false;applyProductFilters()};
     updateWishlistCount();
+    const giftPopup=document.getElementById('giftPopup');
+    function closeGiftPopup(){giftPopup.classList.remove('open');giftPopup.setAttribute('aria-hidden','true');}
+    document.getElementById('giftClose').addEventListener('click',closeGiftPopup);
+    giftPopup.addEventListener('click',event=>{if(event.target===giftPopup)closeGiftPopup()});
+    document.getElementById('giftShop').addEventListener('click',closeGiftPopup);
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'&&giftPopup.classList.contains('open'))closeGiftPopup()});
+    function showFreeGiftPopup(){try{if(sessionStorage.getItem('sera_free_gift_seen')==='1')return;sessionStorage.setItem('sera_free_gift_seen','1')}catch(_){}giftPopup.classList.add('open');giftPopup.setAttribute('aria-hidden','false')}
+    window.addEventListener('load',()=>{window.setTimeout(()=>{if(!document.getElementById('dealPopup').classList.contains('open'))showFreeGiftPopup()},4500)});
     function showDailyDeal(){const deal=products.find(p=>Number(p.discountPrice)>0&&Number(p.discountPrice)<Number(p.price)&&p.active!==false);if(!deal)return;const today=new Date().toISOString().slice(0,10);if(localStorage.getItem('sera_deal_seen')===today)return;document.getElementById('dealContent').innerHTML='<p>'+esc(deal.name)+'</p><div class="deal-price"><span class="old-price">'+money(deal.price)+'</span>'+money(deal.discountPrice)+'</div><p>Limited offer while the deal is available.</p><button class="primary" id="dealShop">Shop this deal</button>';document.getElementById('dealPopup').classList.add('open');localStorage.setItem('sera_deal_seen',today);document.getElementById('dealShop').onclick=()=>{document.getElementById('dealPopup').classList.remove('open');openProduct(deal.id)}}
     document.getElementById('dealClose').onclick=()=>document.getElementById('dealPopup').classList.remove('open');
     const shopSearch=document.getElementById('search');const navSearch=document.getElementById('navSearch');
